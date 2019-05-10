@@ -8,7 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_bottomCopyrightWidget(object):
+class Ui_BottomCopyrightWidget(object):
     def setupUi(self, bottomCopyrightWidget):
         bottomCopyrightWidget.setObjectName("bottomCopyrightWidget")
         bottomCopyrightWidget.resize(400, 41)

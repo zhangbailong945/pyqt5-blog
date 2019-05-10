@@ -35,7 +35,7 @@ class Ui_HeaderImgWidget(object):
         _translate = QtCore.QCoreApplication.translate
         HeaderImgWidget.setWindowTitle(_translate("HeaderImgWidget", "Form"))
 
-import image_rc
+
 
 if __name__ == "__main__":
     import sys

@@ -11,14 +11,23 @@ from MyWidgets.Do_BottomOtherWidget import Do_BottomOtherWidget
 from MyWidgets.Do_BottomCopyrightWidget import Do_BottomCopyrightWidget
 
 from PyQt5.QtWidgets import QApplication,QWidget
-from PyQt5.QtGui import QEnterEvent
-from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QEnterEvent,QFont,QFontDatabase
+from PyQt5.QtCore import Qt,pyqtSignal,pyqtSlot,QEvent
 import sys,os
 
 class Do_MainLayout(FramelessWindow,Ui_MainLayout):
 
     def __init__(self,*args,**kwargs):
         super(Do_MainLayout,self).__init__(*args,**kwargs)
+        self.setAttribute(Qt.WA_StyledBackground,True)
+        path=os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+        path=path.replace('\\','/')
+        self.fontPath=path+"/Resources/Fonts/Font-Awesome-5-Free-Solid-900.otf"
+        self.fontId=QFontDatabase.addApplicationFont(self.fontPath)
+        self.fontFamilies=QFontDatabase.applicationFontFamilies(self.fontId)
+        if len(self.fontFamilies)!=0:
+            self.fontName=self.fontFamilies[0]
+        self.font=QFont(self.fontName,30)
         self.setupUi(self)
         self._initUi()
     
@@ -26,6 +35,30 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         self.resize(800,600)
         #TopWidget布局
         self.titleBar=Do_HeaderTitlebarWidget()
+        #连接按钮槽函数
+        self.titleBar.pb_Close.clicked.connect(self.on_pb_Close_clicked)
+        self.titleBar.pb_Skin.clicked.connect(self.on_pb_Skin_clicked)
+        self.titleBar.pb_Minimum.clicked.connect(self.on_pb_Minimum_clicked)
+        self.titleBar.pb_Maximum.clicked.connect(self.on_pb_pb_Maximum_clicked)
+        self.titleBar.pb_Normal.clicked.connect(self.on_pb_Normal_clicked)
+        
+        #设置按钮图标
+        self.titleBar.pb_Skin.setText("\uf0e4")
+        self.titleBar.pb_Skin.setFont(self.font)
+        self.titleBar.pb_Minimum.setText("\uf2d1")
+        self.titleBar.pb_Minimum.setFont(self.font)
+        self.titleBar.pb_Maximum.setText("\uf2d0")
+        self.titleBar.pb_Maximum.setFont(self.font)
+        self.titleBar.pb_Normal.setText("\uf2d2")
+        self.titleBar.pb_Normal.setFont(self.font)
+        self.titleBar.pb_Close.setText("\uf00d")
+        self.titleBar.pb_Close.setFont(self.font)
+
+
+        self.titleBar.pb_Normal.setVisible(False)
+
+
+
         self.headerImg=Do_HeaderImgWidget()
         self.headerText=Do_HeaderTextWidget()
         self.headerMenu=Do_HeaderMenuWidget()
@@ -56,6 +89,56 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
             # 用于解决鼠标进入其它控件后还原为标准鼠标样式
             self.setCursor(Qt.ArrowCursor)
         return FramelessWindow.eventFilter(self, obj, event)
+
+    @pyqtSlot()
+    def on_pb_Skin_clicked(self):
+        '''
+        换皮肤
+        '''
+        pass
+
+    @pyqtSlot()
+    def on_pb_Minimum_clicked(self):
+        '''
+        最小化
+        '''
+        self.showMinimized()
+    
+    @pyqtSlot()
+    def on_pb_pb_Maximum_clicked(self):
+        '''
+        最大化
+        '''
+        self.showMaximized()
+        
+    @pyqtSlot()
+    def on_pb_Normal_clicked(self):
+        """
+        还原
+        """
+        self.showNormal()
+    
+    @pyqtSlot()
+    def on_pb_Close_clicked(self):
+        """
+        关闭
+        """
+        self.close()
+    
+    def changeEvent(self,event):
+        #窗口改变改变事件
+        FramelessWindow.changeEvent(self,event)
+        if event.type()==QEvent.WindowStateChange:
+            state=self.windowState()
+            if state==(state | Qt.WindowMaximized):
+                #最大化状态显示还原按钮
+                self.titleBar.pb_Maximum.setVisible(False)
+                self.titleBar.pb_Normal.setVisible(True)
+            else:
+                #隐藏还原按钮
+                self.titleBar.pb_Maximum.setVisible(True)
+                self.titleBar.pb_Normal.setVisible(False)
+
 
 
 

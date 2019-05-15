@@ -4,6 +4,8 @@ from MyWidgets.Do_MainLayout import Do_MainLayout
 
 
 StyleSheet='''
+
+/*标题栏面板*/
 #HeaderTitlebarWidget{
     background-color: rgb(247, 155, 106);
 }
@@ -32,6 +34,12 @@ StyleSheet='''
     color: white;
     background-color: rgb(161, 73, 92);
 }
+
+/*头像logo面板*/
+#HeaderImgWidget{
+    background-color: rgb(161, 73, 92);
+}
+
 '''
 
 if __name__ == "__main__":

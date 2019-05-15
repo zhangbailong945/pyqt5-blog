@@ -7,8 +7,8 @@ class Do_HeaderTitlebarWidget(QWidget,Ui_HeaderTitlebarWidget):
 
     def __init__(self,*args,**kwargs):
         super(Do_HeaderTitlebarWidget,self).__init__(*args,**kwargs)
-        self.setAttribute(Qt.WA_StyledBackground,True)
         self.setupUi(self)
+        self.setAttribute(Qt.WA_StyledBackground,True)
         self._initUi()
     
     def _initUi(self):

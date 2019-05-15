@@ -11,8 +11,11 @@ from MyWidgets.Do_BottomOtherWidget import Do_BottomOtherWidget
 from MyWidgets.Do_BottomCopyrightWidget import Do_BottomCopyrightWidget
 
 from PyQt5.QtWidgets import QApplication,QWidget
-from PyQt5.QtGui import QEnterEvent,QFont,QFontDatabase
+from PyQt5.QtGui import QEnterEvent,QFont,QFontDatabase,QPixmap
 from PyQt5.QtCore import Qt,pyqtSignal,pyqtSlot,QEvent
+
+from Utils.Constants import Constants
+
 import sys,os
 
 class Do_MainLayout(FramelessWindow,Ui_MainLayout):
@@ -20,15 +23,10 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
     def __init__(self,*args,**kwargs):
         super(Do_MainLayout,self).__init__(*args,**kwargs)
         self.setAttribute(Qt.WA_StyledBackground,True)
-        path=os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-        path=path.replace('\\','/')
-        self.fontPath=path+"/Resources/Fonts/Font-Awesome-5-Free-Solid-900.otf"
-        self.fontId=QFontDatabase.addApplicationFont(self.fontPath)
-        self.fontFamilies=QFontDatabase.applicationFontFamilies(self.fontId)
-        if len(self.fontFamilies)!=0:
-            self.fontName=self.fontFamilies[0]
-        self.font=QFont(self.fontName,30)
         self.setupUi(self)
+        self.constants=Constants()
+
+        self.font=self.constants.myFont
         self._initUi()
     
     def _initUi(self):
@@ -57,9 +55,14 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
 
         self.titleBar.pb_Normal.setVisible(False)
 
-
-
+        #头像logo面板
         self.headerImg=Do_HeaderImgWidget()
+        print(self.constants.myLogo)
+
+        self.headerImg.lb_HeaderImg.setPixmap(QPixmap(self.constants.myLogo))
+        self.headerImg.lb_HeaderImg.setAlignment(Qt.AlignCenter)
+        self.headerImg.lb_HeaderImg.mouseMoveEvent.connect
+
         self.headerText=Do_HeaderTextWidget()
         self.headerMenu=Do_HeaderMenuWidget()
 
@@ -138,18 +141,6 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
                 #隐藏还原按钮
                 self.titleBar.pb_Maximum.setVisible(True)
                 self.titleBar.pb_Normal.setVisible(False)
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":

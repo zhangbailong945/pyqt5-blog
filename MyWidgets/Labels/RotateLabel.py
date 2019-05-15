@@ -1,5 +1,5 @@
-from PyQt5.QtCore import Qt,QPropertyAnimation
-from PyQt5.QtWidgets import QApplicatin,QWidget,QLabel,QSytleOptinl,QVBoxLayout
+from PyQt5.QtCore import Qt,QPropertyAnimation,pyqtProperty
+from PyQt5.QtWidgets import QApplication,QWidget,QLabel,QVBoxLayout
 from PyQt5.QtGui import QPainter,QPixmap,QPainterPath,QImage
 import sys
 
@@ -15,13 +15,15 @@ class RotateLabel(QLabel):
         self._angle=0 #角度
         self._image='' #图片路径
         self._pixmap=None #图片对象
+        self.setStyleSheet('background-color:white')
+        self.resize(90,90)
 
         #属性动画
         self._animation=QPropertyAnimation(self,b'angle',self)
         self._animation.setLoopCount(1) #循环一次
         self.setPixmap(image)
     
-    def mouseMoveEvent(self):
+    def mousePressEvent(self,event):
         self._animation.stop()
         cv = self._animation.currentValue() or self.STARTVALUE
         self._animation.setDuration(self.DURATION if cv == 0 else int(
@@ -29,8 +31,9 @@ class RotateLabel(QLabel):
         self._animation.setStartValue(cv)
         self._animation.setEndValue(self.ENDVALUE)
         self._animation.start()
+        print(1111)
     
-    def leaveEvent(self, _):
+    def leaveEvent(self,event):
         """鼠标离开事件"""
         # 旋转动画
         self._animation.stop()
@@ -39,12 +42,33 @@ class RotateLabel(QLabel):
         self._animation.setStartValue(cv)
         self._animation.setEndValue(self.STARTVALUE)
         self._animation.start()
+        print(22222)
+    
+    @pyqtProperty(int)
+    def angle(self):
+        return self._angle
+    
+    @angle.setter
+    def angle(self, value):
+        self._angle = value
+        self.update()
+    
+    
+
 
 
 
 
 if __name__ == "__main__":
-    app=QApplicatin(sys.argv)
+    app=QApplication(sys.argv)
     w=QWidget()
-    layout=
+    w.resize(400,400)
+    layout=QVBoxLayout(w)
+    mypixmap=QPixmap('F:/pyqt5projects/pyqt5-blog/resources/images/logo.png')
+    label1=RotateLabel(image=mypixmap)
+    label1.resize(90,90)
+    layout.addWidget(label1)
+    w.setLayout(layout)
+    w.show()
+    sys.exit(app.exec_())
     

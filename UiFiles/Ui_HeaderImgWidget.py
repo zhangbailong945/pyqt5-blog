@@ -7,12 +7,13 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from MyWidgets.Buttons.RotateButton import RotateButton
 
 class Ui_HeaderImgWidget(object):
     def setupUi(self, HeaderImgWidget):
         HeaderImgWidget.setObjectName("HeaderImgWidget")
         HeaderImgWidget.resize(400, 107)
-        HeaderImgWidget.setAutoFillBackground(True)
+        HeaderImgWidget.setAutoFillBackground(False)
         HeaderImgWidget.setStyleSheet("background-color: rgb(247, 155, 106);")
         self.hl_htw_img = QtWidgets.QHBoxLayout(HeaderImgWidget)
         self.hl_htw_img.setContentsMargins(0, 0, 0, 0)
@@ -20,10 +21,14 @@ class Ui_HeaderImgWidget(object):
         self.hl_htw_img.setObjectName("hl_htw_img")
         spacerItem = QtWidgets.QSpacerItem(144, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.hl_htw_img.addItem(spacerItem)
-        self.lb_HeaderImg = QtWidgets.QLabel(HeaderImgWidget)
-        self.lb_HeaderImg.setText("")
-        self.lb_HeaderImg.setObjectName("lb_HeaderImg")
-        self.hl_htw_img.addWidget(self.lb_HeaderImg)
+        self.pb_HeaderImg = RotateButton(HeaderImgWidget)
+        self.pb_HeaderImg.setEnabled(False)
+        self.pb_HeaderImg.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pb_HeaderImg.setAutoFillBackground(False)
+        self.pb_HeaderImg.setText("")
+        self.pb_HeaderImg.setAutoRepeat(False)
+        self.pb_HeaderImg.setObjectName("pb_HeaderImg")
+        self.hl_htw_img.addWidget(self.pb_HeaderImg)
         spacerItem1 = QtWidgets.QSpacerItem(143, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.hl_htw_img.addItem(spacerItem1)
 
@@ -33,6 +38,7 @@ class Ui_HeaderImgWidget(object):
     def retranslateUi(self, HeaderImgWidget):
         _translate = QtCore.QCoreApplication.translate
         HeaderImgWidget.setWindowTitle(_translate("HeaderImgWidget", "Form"))
+
 
 
 

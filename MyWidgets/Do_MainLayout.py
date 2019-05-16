@@ -59,9 +59,10 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         self.headerImg=Do_HeaderImgWidget()
         print(self.constants.myLogo)
 
-        self.headerImg.lb_HeaderImg.setPixmap(QPixmap(self.constants.myLogo))
-        self.headerImg.lb_HeaderImg.setAlignment(Qt.AlignCenter)
-        self.headerImg.lb_HeaderImg.mouseMoveEvent.connect
+        self.headerImg.pb_HeaderImg.setPixmap(QPixmap(self.constants.myLogo))
+        self.headerImg.pb_HeaderImg.setAlignment(Qt.AlignCenter)
+        print(self.constants.myLogo)
+        self.headerImg.pb_HeaderImg.setPixmap(self.constants.myLogo)
 
         self.headerText=Do_HeaderTextWidget()
         self.headerMenu=Do_HeaderMenuWidget()

@@ -25,6 +25,7 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         self.setAttribute(Qt.WA_StyledBackground,True)
         self.setupUi(self)
         self.constants=Constants()
+        print(self.constants.myLogo)
 
         self.font=self.constants.myFont
         self._initUi()
@@ -57,11 +58,7 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
 
         #头像logo面板
         self.headerImg=Do_HeaderImgWidget()
-        print(self.constants.myLogo)
 
-        self.headerImg.pb_HeaderImg.setPixmap(QPixmap(self.constants.myLogo))
-        self.headerImg.pb_HeaderImg.setAlignment(Qt.AlignCenter)
-        print(self.constants.myLogo)
         self.headerImg.pb_HeaderImg.setPixmap(self.constants.myLogo)
 
         self.headerText=Do_HeaderTextWidget()

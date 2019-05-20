@@ -83,11 +83,13 @@ class RotateButton(QPushButton):
         """鼠标进入事件"""
         # 设置阴影
         # 边框阴影效果
+        '''
         effect = QGraphicsDropShadowEffect(self)
         effect.setBlurRadius(self._padding * 2)
         effect.setOffset(0, 0)
         effect.setColor(self._shadowColor)
         self.setGraphicsEffect(effect)
+        '''
 
         # 开启旋转动画
         self._animation.stop()

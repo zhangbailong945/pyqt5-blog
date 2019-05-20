@@ -7,12 +7,11 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from MyWidgets.Buttons.RotateButton import RotateButton
 
 class Ui_HeaderImgWidget(object):
     def setupUi(self, HeaderImgWidget):
         HeaderImgWidget.setObjectName("HeaderImgWidget")
-        HeaderImgWidget.resize(400, 107)
+        HeaderImgWidget.resize(400, 86)
         HeaderImgWidget.setAutoFillBackground(False)
         HeaderImgWidget.setStyleSheet("background-color: rgb(247, 155, 106);")
         self.hl_htw_img = QtWidgets.QHBoxLayout(HeaderImgWidget)
@@ -23,8 +22,10 @@ class Ui_HeaderImgWidget(object):
         self.hl_htw_img.addItem(spacerItem)
         self.pb_HeaderImg = RotateButton(HeaderImgWidget)
         self.pb_HeaderImg.setEnabled(False)
+        self.pb_HeaderImg.setMinimumSize(QtCore.QSize(80, 80))
         self.pb_HeaderImg.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pb_HeaderImg.setAutoFillBackground(False)
+        self.pb_HeaderImg.setStyleSheet("border:none;")
         self.pb_HeaderImg.setText("")
         self.pb_HeaderImg.setAutoRepeat(False)
         self.pb_HeaderImg.setObjectName("pb_HeaderImg")
@@ -39,8 +40,7 @@ class Ui_HeaderImgWidget(object):
         _translate = QtCore.QCoreApplication.translate
         HeaderImgWidget.setWindowTitle(_translate("HeaderImgWidget", "Form"))
 
-
-
+from MyWidgets.Buttons.RotateButton import RotateButton
 
 if __name__ == "__main__":
     import sys

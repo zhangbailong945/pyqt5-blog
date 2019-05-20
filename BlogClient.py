@@ -40,6 +40,12 @@ StyleSheet='''
     background-color: rgb(161, 73, 92);
 }
 
+#hl_htw_img{
+    border:none;
+    width:80px;
+    height:80px;
+}
+
 '''
 
 if __name__ == "__main__":

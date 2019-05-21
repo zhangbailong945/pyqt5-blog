@@ -33,6 +33,8 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
     def _initUi(self):
         self.resize(800,600)
         #TopWidget布局
+
+        #1.标题栏面板
         self.titleBar=Do_HeaderTitlebarWidget()
         #连接按钮槽函数
         self.titleBar.pb_Close.clicked.connect(self.on_pb_Close_clicked)
@@ -56,30 +58,52 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
 
         self.titleBar.pb_Normal.setVisible(False)
 
-        #头像logo面板
+        #2.头像logo面板
         self.headerImg=Do_HeaderImgWidget()
-
+        #设置头像logo
         self.headerImg.pb_HeaderImg.setPixmap(self.constants.myLogo)
 
+        #3.文字面板
         self.headerText=Do_HeaderTextWidget()
-        self.headerMenu=Do_HeaderMenuWidget()
+        self.headerText.setMinimumHeight(50)
+        self.headerText.lb_HeaderText1.setAlignment(Qt.AlignCenter)
+        self.headerText.lb_HeaderText2.setAlignment(Qt.AlignCenter)
 
+        #4.菜单面板
+        self.headerMenu=Do_HeaderMenuWidget()
+        self.headerMenu.setMinimumHeight(50)
         self.vl_Top.addWidget(self.titleBar)
         self.vl_Top.addWidget(self.headerImg)
         self.vl_Top.addWidget(self.headerText)
         self.vl_Top.addWidget(self.headerMenu)
-        #CenterWidget布局
+
+
+        #5.CenterWidget布局
+        self.vl_Center.setStretch(3,1)
+        self.vl_Center.setContentsMargins(35,35,35,35)
         self.centerLeftPost=Do_LeftPostWidget()
+        self.centerLeftPost.setAutoFillBackground(True)
+        self.centerLeftPost.setAttribute(Qt.WA_StyledBackground,True)
         self.centerRightLogin=Do_RightLoginWidget()
+        self.centerRightLogin.setAttribute(Qt.WA_StyledBackground,True)
         self.centerRightSearch=Do_RightSearchWidget()
+        self.centerRightSearch.setAttribute(Qt.WA_StyledBackground,True)   
 
         self.vl_CenterLeft.addWidget(self.centerLeftPost)
+        self.vl_CenterLeft.setContentsMargins(0,0,20,0)
         self.vl_CenterRight.addWidget(self.centerRightLogin)
+        self.vl_CenterRight.addSpacing(20)
         self.vl_CenterRight.addWidget(self.centerRightSearch)
+        
 
         #BottomWidget布局
         self.bottomOther=Do_BottomOtherWidget()
+        self.bottomOther.setMinimumHeight(100)
+
+
+        #底部版权面板
         self.bottomCopyright=Do_BottomCopyrightWidget()
+        self.bottomCopyright.setMinimumHeight(50)
         
         self.vl_Bottom.addWidget(self.bottomOther)
         self.vl_Bottom.addWidget(self.bottomCopyright)

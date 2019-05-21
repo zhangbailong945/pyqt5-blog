@@ -46,6 +46,69 @@ StyleSheet='''
     height:80px;
 }
 
+/*文字面板*/
+#HeaderTextWidget{
+    background-color: rgb(247, 155, 106);
+}
+
+#lb_HeaderText1{
+    font-size:30px;
+    font-weight:bold;
+    color:white;
+}
+
+#lb_HeaderText2{
+    font-size:30px;
+    font-weight:bold;
+    color:black;
+
+}
+
+/*菜单面板*/
+#HeaderMenuWidget{
+    background-color: rgb(255, 255, 255);
+}
+
+#pb_Index,#pb_Category,#pb_DateTime,#pb_Tags,#pb_About{
+    border:none;
+    color:rgb(80,80,80);
+}
+
+#pb_Index:hover,#pb_Category:hover,#pb_DateTime:hover,#pb_Tags:hover,#pb_About:hover{
+    border:none;
+    color:rgb(247, 155, 106);
+}
+/**/
+#centerWidget{
+    background-color: rgb(233, 240, 245);
+}
+
+/*笔记列表面板*/
+#LeftPostWidget{
+    background-color: rgb(255, 255, 255);
+}
+
+#tb_Post{
+    border:none;
+}
+
+#pb_Previous,#pb_Next{
+    border:none;
+    background-color: rgb(247, 155, 106);
+    color:white;
+    border:radius:10px;
+}
+
+/*登录面板*/
+#RightLoginWidget{
+    background-color: rgb(255, 255, 255);
+}
+
+#lb_Login_Title{
+    font-weight:bold;
+}
+
+
 '''
 
 if __name__ == "__main__":

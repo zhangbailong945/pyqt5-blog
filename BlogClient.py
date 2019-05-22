@@ -83,7 +83,7 @@ StyleSheet='''
     border-bottom:2px solid rgb(247, 155, 106);
 }
 
-/**/
+/*内容面板*/
 #centerWidget{
     background-color: rgb(233, 240, 245);
 }

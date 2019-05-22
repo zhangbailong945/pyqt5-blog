@@ -1,17 +1,18 @@
-from PyQt5.QtCore import Qt,QUrl,QJsonDocument,QByteArray,QJsonParseError,pyqtSignal
+from PyQt5.QtCore import Qt,QUrl,QJsonDocument,QByteArray,QJsonParseError,pyqtSignal,QObject
 from PyQt5.QtWidgets import QApplication,QWidget
 from PyQt5.QtGui import *
 from PyQt5.QtNetwork import QNetworkAccessManager,QNetworkRequest,QNetworkReply
 import sys,json
 
 
-class MyHttp(object):
+class MyHttp(QObject):
 
-    getResponse=pyqtSignal(str)
+    signal_Response=pyqtSignal(str)
     
     def __init__(self,url,*args,**kwargs):
         super(MyHttp,self).__init__(*args,**kwargs)
         self._url=url
+        self.request()
         
     
     def request(self):
@@ -30,10 +31,11 @@ class MyHttp(object):
         if err==QNetworkReply.NoError:
             bytes_string=reply.readAll()
             json_str=str(bytes_string,'utf-8')
-            self.getResponse.emit(json_str)
+            self.signal_Response.emit(json_str)
         else:
             print("Error occurred:",err)
             print(reply.errorString())
+    
 
     @property
     def url(self):

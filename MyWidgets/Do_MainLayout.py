@@ -12,11 +12,13 @@ from MyWidgets.Do_BottomCopyrightWidget import Do_BottomCopyrightWidget
 
 from PyQt5.QtWidgets import QApplication,QWidget
 from PyQt5.QtGui import QEnterEvent,QFont,QFontDatabase,QPixmap
-from PyQt5.QtCore import Qt,pyqtSignal,pyqtSlot,QEvent
+from PyQt5.QtCore import Qt,pyqtSignal,pyqtSlot,QEvent,QUrl
+from PyQt5.QtNetwork import QNetworkAccessManager,QNetworkReply,QNetworkRequest
 
+from Utils.MyHttp import MyHttp
 from Utils.Constants import Constants
 
-import sys,os
+import sys,os,json
 
 class Do_MainLayout(FramelessWindow,Ui_MainLayout):
 
@@ -25,7 +27,6 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         self.setAttribute(Qt.WA_StyledBackground,True)
         self.setupUi(self)
         self.constants=Constants()
-        print(self.constants.myLogo)
 
         self.font=self.constants.myFont
         self._initUi()
@@ -168,7 +169,29 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
                 self.titleBar.pb_Normal.setVisible(False)
         
     def _initIndex(self):
-        pass
+        req=QNetworkRequest(QUrl('http://localhost:8000/api/post/?format=json'))
+        req.setRawHeader(b'Accept',b'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8')
+        req.setRawHeader(b'Accept-Encoding',b'gzip, deflate, br')
+        req.setRawHeader(b'ccept-Language',b'zh-CN,zh;q=0.9')
+        req.setRawHeader(b'User-Agent',b'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36')
+        req.setHeader(QNetworkRequest.ContentTypeHeader,"application/json")
+        self.nam=QNetworkAccessManager()
+        self.nam.finished.connect(self.handleResponse)
+        self.nam.get(req)
+    
+    def handleResponse(self,reply):
+        err=reply.error()
+        if err==QNetworkReply.NoError:
+            bytes_string=reply.readAll()
+            json_str=str(bytes_string,'utf-8')
+            json_dict=json.loads(json_str)
+
+            self.centerLeftPost.tb_Post.setHtml(json_dict['results'][0]['content'])
+        else:
+            print("Error occurred:",err)
+            print(reply.errorString())
+    
+
 
 
 if __name__ == "__main__":

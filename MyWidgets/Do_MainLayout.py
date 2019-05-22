@@ -29,6 +29,7 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
 
         self.font=self.constants.myFont
         self._initUi()
+        self._initIndex()
     
     def _initUi(self):
         self.resize(800,600)
@@ -71,11 +72,12 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
 
         #4.菜单面板
         self.headerMenu=Do_HeaderMenuWidget()
-        self.headerMenu.setMinimumHeight(50)
+        self.headerMenu.setMaximumHeight(40)
         self.vl_Top.addWidget(self.titleBar)
         self.vl_Top.addWidget(self.headerImg)
         self.vl_Top.addWidget(self.headerText)
         self.vl_Top.addWidget(self.headerMenu)
+        self.headerMenu.pb_Index.setChecked(True)
 
 
         #5.CenterWidget布局
@@ -114,6 +116,7 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
             # 用于解决鼠标进入其它控件后还原为标准鼠标样式
             self.setCursor(Qt.ArrowCursor)
         return FramelessWindow.eventFilter(self, obj, event)
+    
 
     @pyqtSlot()
     def on_pb_Skin_clicked(self):
@@ -163,6 +166,9 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
                 #隐藏还原按钮
                 self.titleBar.pb_Maximum.setVisible(True)
                 self.titleBar.pb_Normal.setVisible(False)
+        
+    def _initIndex(self):
+        pass
 
 
 if __name__ == "__main__":

@@ -78,6 +78,11 @@ StyleSheet='''
     border:none;
     color:rgb(247, 155, 106);
 }
+
+#pb_Index:checked,#pb_Category:checked,#pb_DateTime:checked,#pb_Tags:checked,#pb_About:checked{
+    border-bottom:2px solid rgb(247, 155, 106);
+}
+
 /**/
 #centerWidget{
     background-color: rgb(233, 240, 245);

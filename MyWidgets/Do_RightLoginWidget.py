@@ -10,5 +10,6 @@ class Do_RightLoginWidget(QWidget,Ui_RightLoginWidget):
         self._initUi()
     
     def _initUi(self):
-        self.resize(200,300)
+        self.setMaximumHeight(120)
+        self.setMinimumHeight(120)
         

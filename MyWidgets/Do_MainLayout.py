@@ -9,6 +9,7 @@ from MyWidgets.Do_RightLoginWidget import Do_RightLoginWidget
 from MyWidgets.Do_RightSearchWidget import Do_RightSearchWidget
 from MyWidgets.Do_BottomOtherWidget import Do_BottomOtherWidget
 from MyWidgets.Do_BottomCopyrightWidget import Do_BottomCopyrightWidget
+from MyWidgets.Do_LeftCategoryWidget import Do_LeftCategoryWidget
 
 from PyQt5.QtWidgets import QApplication,QWidget
 from PyQt5.QtGui import QEnterEvent,QFont,QFontDatabase,QPixmap
@@ -79,20 +80,29 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         self.vl_Top.addWidget(self.headerText)
         self.vl_Top.addWidget(self.headerMenu)
         self.headerMenu.pb_Index.setChecked(True)
+        self.headerMenu.pb_Category.clicked.connect(self.on_pb_Category_clicked)
+        self.headerMenu.pb_Index.clicked.connect(self.on_pb_Index_clicked)
 
 
         #5.CenterWidget布局
         self.vl_Center.setStretch(3,1)
         self.vl_Center.setContentsMargins(35,35,35,35)
+
+        #首页面板
         self.centerLeftPost=Do_LeftPostWidget()
         self.centerLeftPost.setAutoFillBackground(True)
         self.centerLeftPost.setAttribute(Qt.WA_StyledBackground,True)
         self.centerRightLogin=Do_RightLoginWidget()
         self.centerRightLogin.setAttribute(Qt.WA_StyledBackground,True)
         self.centerRightSearch=Do_RightSearchWidget()
-        self.centerRightSearch.setAttribute(Qt.WA_StyledBackground,True)   
+        self.centerRightSearch.setAttribute(Qt.WA_StyledBackground,True)
 
-        self.vl_CenterLeft.addWidget(self.centerLeftPost)
+        #分页面板
+        self.centerLeftCategory=Do_LeftCategoryWidget()
+
+        #self.vl_CenterLeft.addWidget(self.centerLeftPost)
+        self.leftWidget.addWidget(self.centerLeftPost)
+        self.leftWidget.addWidget(self.centerLeftCategory)
         self.vl_CenterLeft.setContentsMargins(0,0,20,0)
         self.vl_CenterRight.addWidget(self.centerRightLogin)
         self.vl_CenterRight.addSpacing(20)
@@ -117,6 +127,12 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
             # 用于解决鼠标进入其它控件后还原为标准鼠标样式
             self.setCursor(Qt.ArrowCursor)
         return FramelessWindow.eventFilter(self, obj, event)
+    
+    def on_pb_Category_clicked(self):
+        self.leftWidget.setCurrentIndex(1)
+    
+    def on_pb_Index_clicked(self):
+        self.leftWidget.setCurrentIndex(0)
     
 
     @pyqtSlot()

@@ -11,7 +11,7 @@ from MyWidgets.Do_BottomOtherWidget import Do_BottomOtherWidget
 from MyWidgets.Do_BottomCopyrightWidget import Do_BottomCopyrightWidget
 from MyWidgets.Do_LeftCategoryWidget import Do_LeftCategoryWidget
 
-from PyQt5.QtWidgets import QApplication,QWidget
+from PyQt5.QtWidgets import QApplication,QWidget,QSpacerItem,QSizePolicy
 from PyQt5.QtGui import QEnterEvent,QFont,QFontDatabase,QPixmap
 from PyQt5.QtCore import Qt,pyqtSignal,pyqtSlot,QEvent,QUrl
 from PyQt5.QtNetwork import QNetworkAccessManager,QNetworkReply,QNetworkRequest
@@ -101,12 +101,17 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         self.centerLeftCategory=Do_LeftCategoryWidget()
 
         #self.vl_CenterLeft.addWidget(self.centerLeftPost)
+        #左边
         self.leftWidget.addWidget(self.centerLeftPost)
         self.leftWidget.addWidget(self.centerLeftCategory)
-        self.vl_CenterLeft.setContentsMargins(0,0,20,0)
+        self.leftWidget.setContentsMargins(0,0,20,0)
+
+        #右边
         self.vl_CenterRight.addWidget(self.centerRightLogin)
         self.vl_CenterRight.addSpacing(20)
         self.vl_CenterRight.addWidget(self.centerRightSearch)
+        self.si_CenterRight=QSpacerItem(20,200,QSizePolicy.Minimum,QSizePolicy.Expanding)
+        self.vl_CenterRight.addItem(self.si_CenterRight)
         
 
         #BottomWidget布局
@@ -201,8 +206,65 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
             bytes_string=reply.readAll()
             json_str=str(bytes_string,'utf-8')
             json_dict=json.loads(json_str)
+            self.nextUrl=json_dict['next']
+            self.prevUrl=json_dict['previous']
+            if self.nextUrl!=None:
+                self.centerLeftPost.pb_Next.setVisible(True)
+            else:
+                self.centerLeftPost.pb_Next.setVisible(False)
+            
+            if self.prevUrl!=None:
+                self.centerLeftPost.pb_Previous.setVisible(True)
+            else:
+                self.centerLeftPost.pb_Previous.setVisible(False)
 
-            self.centerLeftPost.tb_Post.setHtml(json_dict['results'][0]['content'])
+                self.postList=json_dict['results']
+                self.postListHtml=''
+                for article in self.postList:
+                    self.postListHtml+="""
+    <article class='post tag-about-ghost tag-release featured'>
+        <div class='featured' title='推荐文章'>
+            <i class='fa fa-star'></i>
+        </div>
+        <div class='post-head'>
+            <h1 class='post-title'>
+                <a href='/post/{id}/'>{title}</a>
+            </h1>
+            <div class='post-meta'>
+                <span class='author'>作者：
+                    <a href="/about/">{username}</a>
+                </span>
+                <span class='author'>分类：
+                    <a href="/category/{cid}/">{cname}</a>
+                </span>
+                <time class='post-date' datetime='{created_time}' title='发表时间'>{created_time}</time>
+                <span>阅读:
+                    <a href="#">{views}</a>
+                </span>
+                <span>评论:
+                    <a href="/post/9/#comment-area">0条</a>
+                </span>
+            </div>
+        </div>
+        <div class='post-content'>
+            <a href="/post/{id}/">
+                <img class="post-content-img" src="{post_img}"/>
+            </a>
+            <div class="right">
+        {content}
+            <span><a href='/post/{id}/' class="btn">阅读全文</a></span>
+            </div>
+        </div>
+        <!--
+        <div class='post-permalink'>
+            
+        </div>
+        -->
+    </article>
+                        """.format(id=article['id'],title=article['title'],content=article['content'],cid=article['cid'],cname=article['cname'],views=article['views'],post_img=article['post_img'],created_time=article['created_time'],username=article['username'])
+            self.postListHtml=self.constants.initTbHeader()+self.constants.initTbBody(self.postListHtml)+self.constants.initTbFooter()
+            print(self.postListHtml)
+            self.centerLeftPost.tb_Post.setHtml(self.postListHtml)
         else:
             print("Error occurred:",err)
             print(reply.errorString())

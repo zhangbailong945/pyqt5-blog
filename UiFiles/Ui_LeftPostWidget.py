@@ -6,7 +6,7 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets,QtWebEngineWidgets
 
 class Ui_LeftPostWidget(object):
     def setupUi(self, LeftPostWidget):
@@ -17,7 +17,7 @@ class Ui_LeftPostWidget(object):
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.tb_Post = QtWidgets.QTextBrowser(LeftPostWidget)
+        self.tb_Post = QtWebEngineWidgets.QWebEngineView(LeftPostWidget)
         self.tb_Post.setObjectName("tb_Post")
         self.verticalLayout.addWidget(self.tb_Post)
         self.pb_Previous = QtWidgets.QPushButton(LeftPostWidget)

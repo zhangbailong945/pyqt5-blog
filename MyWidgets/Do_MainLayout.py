@@ -96,6 +96,8 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         self.centerRightLogin.setAttribute(Qt.WA_StyledBackground,True)
         self.centerRightSearch=Do_RightSearchWidget()
         self.centerRightSearch.setAttribute(Qt.WA_StyledBackground,True)
+        self.indexHtmlPath=self.constants.path+"/MyWeb/index.html"
+        self.centerLeftPost.web_Post.load(QUrl("file:///"+self.indexHtmlPath))
 
         #分页面板
         self.centerLeftCategory=Do_LeftCategoryWidget()
@@ -103,6 +105,7 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         #self.vl_CenterLeft.addWidget(self.centerLeftPost)
         #左边
         self.leftWidget.addWidget(self.centerLeftPost)
+
         self.leftWidget.addWidget(self.centerLeftCategory)
         self.leftWidget.setContentsMargins(0,0,20,0)
 
@@ -190,88 +193,8 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
                 self.titleBar.pb_Normal.setVisible(False)
         
     def _initIndex(self):
-        req=QNetworkRequest(QUrl('http://localhost:8000/api/post/?format=json'))
-        req.setRawHeader(b'Accept',b'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8')
-        req.setRawHeader(b'Accept-Encoding',b'gzip, deflate, br')
-        req.setRawHeader(b'ccept-Language',b'zh-CN,zh;q=0.9')
-        req.setRawHeader(b'User-Agent',b'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36')
-        req.setHeader(QNetworkRequest.ContentTypeHeader,"application/json")
-        self.nam=QNetworkAccessManager()
-        self.nam.finished.connect(self.handleResponse)
-        self.nam.get(req)
+        pass
     
-    def handleResponse(self,reply):
-        err=reply.error()
-        if err==QNetworkReply.NoError:
-            bytes_string=reply.readAll()
-            json_str=str(bytes_string,'utf-8')
-            json_dict=json.loads(json_str)
-            self.nextUrl=json_dict['next']
-            self.prevUrl=json_dict['previous']
-            if self.nextUrl!=None:
-                self.centerLeftPost.pb_Next.setVisible(True)
-            else:
-                self.centerLeftPost.pb_Next.setVisible(False)
-            
-            if self.prevUrl!=None:
-                self.centerLeftPost.pb_Previous.setVisible(True)
-            else:
-                self.centerLeftPost.pb_Previous.setVisible(False)
-
-                self.postList=json_dict['results']
-                self.postListHtml=''
-                for article in self.postList:
-                    self.postListHtml+="""
-    <article class='post tag-about-ghost tag-release featured'>
-        <div class='featured' title='推荐文章'>
-            <i class='fa fa-star'></i>
-        </div>
-        <div class='post-head'>
-            <h1 class='post-title'>
-                <a href='/post/{id}/'>{title}</a>
-            </h1>
-            <div class='post-meta'>
-                <span class='author'>作者：
-                    <a href="/about/">{username}</a>
-                </span>
-                <span class='author'>分类：
-                    <a href="/category/{cid}/">{cname}</a>
-                </span>
-                <time class='post-date' datetime='{created_time}' title='发表时间'>{created_time}</time>
-                <span>阅读:
-                    <a href="#">{views}</a>
-                </span>
-                <span>评论:
-                    <a href="/post/9/#comment-area">0条</a>
-                </span>
-            </div>
-        </div>
-        <div class='post-content'>
-            <a href="/post/{id}/">
-                <img class="post-content-img" src="{post_img}"/>
-            </a>
-            <div class="right">
-        {content}
-            <span><a href='/post/{id}/' class="btn">阅读全文</a></span>
-            </div>
-        </div>
-        <!--
-        <div class='post-permalink'>
-            
-        </div>
-        -->
-    </article>
-                        """.format(id=article['id'],title=article['title'],content=article['content'],cid=article['cid'],cname=article['cname'],views=article['views'],post_img=article['post_img'],created_time=article['created_time'],username=article['username'])
-            self.postListHtml=self.constants.initTbHeader()+self.constants.initTbBody(self.postListHtml)+self.constants.initTbFooter()
-            print(self.postListHtml)
-            self.centerLeftPost.tb_Post.setHtml(self.postListHtml)
-        else:
-            print("Error occurred:",err)
-            print(reply.errorString())
-    
-
-
-
 if __name__ == "__main__":
     app=QApplication(sys.argv)
     w=Do_MainLayout()

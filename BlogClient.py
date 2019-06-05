@@ -114,6 +114,24 @@ StyleSheet='''
 }
 
 
+#版权面板
+#label_BottomCopyRight_Line{
+    margin-right:4px;
+}
+
+#label_BottomCopyright_Beian{
+
+}
+
+#label_BottomCopyright_Site{
+    margin-right:4px;
+}
+
+#label_BottomCopyright_Copyright{
+    margin-right:4px;
+}
+
+
 '''
 
 if __name__ == "__main__":

@@ -24,9 +24,21 @@
 		<link rel="stylesheet" href="css/amazeui.page.css">
 	</head>
 	<body>
-		<div class="am-container" id="category">
+		<div class="am-container about" id="about">
 
+ <article data-am-widget="paragraph"
+           class="am-paragraph am-paragraph-default"
+           
+           data-am-paragraph="{ tableScrollable: true, pureview: true }">
 
+          <img src=./img/logo.png><p class=paragraph-default-p>南极洲又称<a href=http://zh.wikipedia.org/w/index.php?title=%E7%AC%AC%E4%B8%83%E5%A4%A7%E9%99%86&redirect=no>第七大陆</a>，
+		  是地球上最后一个被发现、唯一没有土著人居住的大陆。</p>
+		  <p>南极大陆为通常所说的南大洋（太平洋、印度洋和大西洋的南部水域）
+		  所包围，它与南美洲最近的距离为965公里，距新西兰2000公里、
+		  距澳大利亚2500公里、距南非3800公里、距中国北京的距离约有12000公里。
+		  南极大陆的总面积为1390万平方公里，相当于中国和印巴次大陆面积的总和，
+		  居世界各洲第五位。</p>
+  </article>
 
 			
 		</div>
@@ -51,43 +63,10 @@
 		<script>
 			$(function() {
 			
-				var url = 'http://localhost:8000/api/category/?format=json&pageNumer=1&pageSize=100';
-				axios.get(url)
-					.then(function(data) {
-						getPostList(data);
-					})
-					.catch(function(error) {
-						console.log(error);
-					});
+
 
 			});
 
-			/*处理Post数据*/
-			function getPostList(data) {
-				var htmlStr=''
-				if(data.data.results.length>0)
-				{
-				htmlStr+="<ul class='am-list admin-sidebar-list' id='collapase-nav-1'>";
-				htmlStr+=
-				"<li class='am-panel'>"+
-					"<a  href='index.html'><i class='am-icon-home am-margin-left-sm'></i> 首页</a>"+
-				"</li>";
-				$.each(data.data.results,function(k,v){
-					htmlStr+=
-					"<li class='am-panel'>"+
-						"<a href='categorylist.html?id="+v.id+"'><i class='am-icon-list am-margin-left-sm'></i>&nbsp;&nbsp;"+v.name+"</a>"+
-					"</li>";
-				});
-				htmlStr+="</url>";
-				$('#category').html(htmlStr);
-				}
-				else
-				{
-					$('#category').html(
-					"<center><div style='text-aglin:center;'><font color='red'>暂时还没有数据!<font></div></center>"
-					);
-				}
-			}
 		</script>
 	</body>
 </html>

@@ -40,21 +40,21 @@ class Ui_BottomCopyrightWidget(object):
 
         self.retranslateUi(bottomCopyrightWidget)
         QtCore.QMetaObject.connectSlotsByName(bottomCopyrightWidget)
-
+        
     def retranslateUi(self, bottomCopyrightWidget):
         _translate = QtCore.QCoreApplication.translate
         bottomCopyrightWidget.setWindowTitle(_translate("bottomCopyrightWidget", "Form"))
-        self.label_BottomCopyright_Copyright.setText(_translate("bottomCopyrightWidget", "Copyright ©"))
-        self.label_BottomCopyright_Site.setText(_translate("bottomCopyrightWidget", "LoachBlog个人笔记"))
-        self.label_BottomCopyRight_Line.setText(_translate("bottomCopyrightWidget", "|"))
-        self.label_BottomCopyright_Beian.setText(_translate("bottomCopyrightWidget", "粤ICP备16026304号-2"))
+        self.label_BottomCopyright_Copyright.setText(_translate("bottomCopyrightWidget", "<html><head/><body><p><a href=\"#\"><span style=\" font-size:12px; color:#FFFFFF;text-decoration:none;\">Copyright ©</span></a></p></body></html>"))
+        self.label_BottomCopyright_Site.setText(_translate("bottomCopyrightWidget", "<html><head/><body><p><a href=\"https://loachblog.com\"><span style=\" font-size:12px; color:#FFFFFF;text-decoration:none;\">LoachBlog个人笔记</span></a></p></body></html>"))
+        self.label_BottomCopyRight_Line.setText(_translate("bottomCopyrightWidget", "<html><head/><body><p><a href=\"#\"><span style=\" font-size:12px; color:#FFFFFF;text-decoration:none;\">|</span></a></p></body></html>"))
+        self.label_BottomCopyright_Beian.setText(_translate("bottomCopyrightWidget", "<html><head/><body><p><a href=\"http://beian.miit.gov.cn/\"><span style=\" font-size:12px; color:#FFFFFF;text-decoration:none;\">粤ICP备16026304号-2</span></a></p></body></html>"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     bottomCopyrightWidget = QtWidgets.QWidget()
-    ui = Ui_bottomCopyrightWidget()
+    ui = Ui_BottomCopyrightWidget()
     ui.setupUi(bottomCopyrightWidget)
     bottomCopyrightWidget.show()
     sys.exit(app.exec_())

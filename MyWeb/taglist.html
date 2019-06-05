@@ -73,8 +73,8 @@
 		<script>
 			
 			$(function() {
-				var cid = getQueryVariable('id');
-				axios.get('http://localhost:8000/api/post/?format=json&category__id='+cid+'&pageNumer=1&pageSize=3')
+				var cid = getQueryVariable('tid');
+				axios.get('http://localhost:8000/api/post/?format=json&tags__id='+cid+'&pageNumer=1&pageSize=3')
 					.then(function(data) {
 						if (data.data.previous != null) {
 							$('#pageNum1').html('<a javascript:void(0);  onclick="go(\"' + data.data.previous + '\")">上一页</a>')

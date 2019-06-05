@@ -82,7 +82,10 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         self.headerMenu.pb_Index.setChecked(True)
         self.headerMenu.pb_Category.clicked.connect(self.on_pb_Category_clicked)
         self.headerMenu.pb_Index.clicked.connect(self.on_pb_Index_clicked)
-
+        self.headerMenu.pb_Category.clicked.connect(self.on_pb_Category_clicked)
+        self.headerMenu.pb_DateTime.clicked.connect(self.on_pb_DateTime_clicked)
+        self.headerMenu.pb_Tags.clicked.connect(self.on_pb_Tags_clicked)
+        self.headerMenu.pb_About.clicked.connect(self.on_pb_About_clicked)
 
         #5.CenterWidget布局
         self.vl_Center.setStretch(3,1)
@@ -97,6 +100,11 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         self.centerRightSearch=Do_RightSearchWidget()
         self.centerRightSearch.setAttribute(Qt.WA_StyledBackground,True)
         self.indexHtmlPath=self.constants.path+"/MyWeb/index.html"
+        self.categoryHtmlPath=self.constants.path+"/MyWeb/category.html"
+        self.tagsHtmlPath=self.constants.path+"/MyWeb/tags.html"
+        self.tagsHtmlPath=self.constants.path+"/MyWeb/tags.html"
+        self.aboutHtmlPath=self.constants.path+"/MyWeb/about.html"
+        self.timeHtmlPath=self.constants.path+"/MyWeb/timeline.html"
         self.centerLeftPost.web_Post.load(QUrl("file:///"+self.indexHtmlPath))
 
         #分页面板
@@ -137,10 +145,28 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         return FramelessWindow.eventFilter(self, obj, event)
     
     def on_pb_Category_clicked(self):
-        self.leftWidget.setCurrentIndex(1)
+        self.leftWidget.setCurrentIndex(0)
+        self.centerLeftPost.web_Post.load(QUrl("file:///"+self.categoryHtmlPath))
     
     def on_pb_Index_clicked(self):
         self.leftWidget.setCurrentIndex(0)
+        self.centerLeftPost.web_Post.load(QUrl("file:///"+self.indexHtmlPath))
+    
+    def on_pb_DateTime_clicked(self):
+        self.leftWidget.setCurrentIndex(0)
+        self.centerLeftPost.web_Post.load(QUrl("file:///"+self.timeHtmlPath))
+    
+    def on_pb_Tags_clicked(self):
+        self.leftWidget.setCurrentIndex(0)
+        self.centerLeftPost.web_Post.load(QUrl("file:///"+self.tagsHtmlPath))
+    
+    def on_pb_About_clicked(self):
+        self.leftWidget.setCurrentIndex(0)
+        self.centerLeftPost.web_Post.load(QUrl("file:///"+self.aboutHtmlPath))
+    
+    
+    
+
     
 
     @pyqtSlot()

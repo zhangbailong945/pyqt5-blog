@@ -11,13 +11,14 @@ from MyWidgets.Do_BottomOtherWidget import Do_BottomOtherWidget
 from MyWidgets.Do_BottomCopyrightWidget import Do_BottomCopyrightWidget
 from MyWidgets.Do_LeftCategoryWidget import Do_LeftCategoryWidget
 
-from PyQt5.QtWidgets import QApplication,QWidget,QSpacerItem,QSizePolicy
+from PyQt5.QtWidgets import QApplication,QWidget,QSpacerItem,QSizePolicy,QLabel
 from PyQt5.QtGui import QEnterEvent,QFont,QFontDatabase,QPixmap
 from PyQt5.QtCore import Qt,pyqtSignal,pyqtSlot,QEvent,QUrl
 from PyQt5.QtNetwork import QNetworkAccessManager,QNetworkReply,QNetworkRequest
 
 from Utils.MyHttp import MyHttp
 from Utils.Constants import Constants
+from Utils.MyHttp import MyHttp
 
 import sys,os,json
 
@@ -107,6 +108,7 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         self.timeHtmlPath=self.constants.path+"/MyWeb/timeline.html"
         self.centerLeftPost.web_Post.load(QUrl("file:///"+self.indexHtmlPath))
 
+
         #分页面板
         self.centerLeftCategory=Do_LeftCategoryWidget()
 
@@ -127,7 +129,19 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
 
         #BottomWidget布局
         self.bottomOther=Do_BottomOtherWidget()
-        self.bottomOther.setMinimumHeight(100)
+        self.bottomOther.setMinimumHeight(150)
+        myHttp=MyHttp()
+        bottomPostList=myHttp.getNewPostList()
+        for p in bottomPostList:
+            p['id']=QLabel("<html><head/><body><p><a href=\"https://loachblog.com/post/"+str(p['id'])+"/\"><span style=\" font-size:12px; color:#FFFFFF;text-decoration:none;\">"+p['title']+"</span></a></p></body></html>")
+            p['id'].setOpenExternalLinks(True)
+            self.bottomOther.verticalLayout.addWidget(p['id'])
+        
+        more=QLabel("<html><head/><body><p><a href=\"https://loachblog.com/\"><span style=\" font-size:12px; color:#FFFFFF;text-decoration:none;\">更多</span></a></p></body></html>")
+        more.setOpenExternalLinks(True)
+        self.bottomOther.verticalLayout.addWidget(more)
+        self.bottomOther.widgetBottomLeft.setContentsMargins(10,10,10,10)
+        self.bottomOther.verticalLayout.setSpacing(10)
 
 
         #底部版权面板

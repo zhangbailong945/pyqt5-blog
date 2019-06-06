@@ -137,11 +137,21 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
             p['id'].setOpenExternalLinks(True)
             self.bottomOther.verticalLayout.addWidget(p['id'])
         
-        more=QLabel("<html><head/><body><p><a href=\"https://loachblog.com/\"><span style=\" font-size:12px; color:#FFFFFF;text-decoration:none;\">更多</span></a></p></body></html>")
-        more.setOpenExternalLinks(True)
-        self.bottomOther.verticalLayout.addWidget(more)
+        pmore=QLabel("<html><head/><body><p><a href=\"https://loachblog.com/\"><span style=\" font-size:12px; color:#FFFFFF;text-decoration:none;\">更多</span></a></p></body></html>")
+        pmore.setOpenExternalLinks(True)
+        self.bottomOther.verticalLayout.addWidget(pmore)
         self.bottomOther.widgetBottomLeft.setContentsMargins(10,10,10,10)
         self.bottomOther.verticalLayout.setSpacing(10)
+
+        bottomTagList=myHttp.getNewTagList()
+        for p in bottomTagList:
+            p['id']=QLabel("<html><head/><body><p><a href=\"https://loachblog.com/tags/"+str(p['id'])+"/\"><span style=\" font-size:12px; color:#FFFFFF;text-decoration:none;\">"+p['name']+"</span></a></p></body></html>")
+            p['id'].setOpenExternalLinks(True)
+            self.bottomOther.verticalLayout_2.addWidget(p['id'])
+        
+        tmore=QLabel("<html><head/><body><p><a href=\"https://loachblog.com/\"><span style=\" font-size:12px; color:#FFFFFF;text-decoration:none;\">更多</span></a></p></body></html>")
+        tmore.setOpenExternalLinks(True)
+        self.bottomOther.verticalLayout_2.addWidget(tmore)
 
 
         #底部版权面板

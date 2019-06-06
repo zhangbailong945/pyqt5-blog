@@ -7,7 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from MyWidgets.Layouts.FlowLayout import FlowLayout
 class Ui_BottomOtherWidget(object):
     def setupUi(self, BottomOtherWidget):
         BottomOtherWidget.setObjectName("BottomOtherWidget")
@@ -29,10 +29,8 @@ class Ui_BottomOtherWidget(object):
         self.widget_BottomCenter = QtWidgets.QWidget(BottomOtherWidget)
         self.widget_BottomCenter.setAutoFillBackground(False)
         self.widget_BottomCenter.setObjectName("widget_BottomCenter")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget_BottomCenter)
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_2.setSpacing(0)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.verticalLayout_2 = FlowLayout(self.widget_BottomCenter)
+        self.verticalLayout_2.setObjectName('flowLayout1')
         self.horizontalLayout.addWidget(self.widget_BottomCenter)
         self.widget_BottomRight = QtWidgets.QWidget(BottomOtherWidget)
         self.widget_BottomRight.setAutoFillBackground(False)

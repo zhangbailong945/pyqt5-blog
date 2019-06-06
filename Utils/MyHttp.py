@@ -25,10 +25,15 @@ class MyHttp(object):
         url='http://localhost:8000/api/post/?format=json&pageNumer=1&pageSize=5'
         headers=self.setHeader()
         http=urllib3.PoolManager()
-        response=http.request('GET',url,headers=headers)
-        data=response.data.decode('utf-8')
-        dict1=json.loads(data)
-        list1=dict1['results']
+        list1=[]
+        try:
+            response=http.request('GET',url,headers=headers)
+            data=response.data.decode('utf-8')
+            dict1=json.loads(data)
+            list1=dict1['results']
+            return list1
+        except urllib3.exceptions.NewConnectionError:
+            print('访问最新的六条笔记API失败！')
         return list1
     
     def getNewTagList(self):
@@ -37,13 +42,18 @@ class MyHttp(object):
         '''
         url='http://localhost:8000/api/tags/?format=json&pageNumer=1&pageSize=6'
         headers=self.setHeader()
-        http=urllib3.PoolManager()
-        response=http.request('GET',url,headers=headers)
-        data=response.data.decode('utf-8')
-        dict1=json.loads(data)
-        list1=dict1['results']
+        list1=[]
+        try:
+            http=urllib3.PoolManager()
+            response=http.request('GET',url,headers=headers)
+            data=response.data.decode('utf-8')
+            dict1=json.loads(data)
+            list1=dict1['results']
+            return list1
+        except urllib3.exceptions.NewConnectionError:
+            print('获取最新的六条标签API失败！')
         return list1
-
+        
 '''
 if __name__ == "__main__":
     myhttp=MyHttp()

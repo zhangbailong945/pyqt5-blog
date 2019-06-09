@@ -9,6 +9,7 @@ from MyWidgets.Do_RightLoginWidget import Do_RightLoginWidget
 from MyWidgets.Do_RightSearchWidget import Do_RightSearchWidget
 from MyWidgets.Do_BottomOtherWidget import Do_BottomOtherWidget
 from MyWidgets.Do_BottomCopyrightWidget import Do_BottomCopyrightWidget
+from MyWidgets.Do_BottomTitleWidget import Do_BottomTitleWidget
 from MyWidgets.Do_LeftCategoryWidget import Do_LeftCategoryWidget
 
 from PyQt5.QtWidgets import QApplication,QWidget,QSpacerItem,QSizePolicy,QLabel
@@ -128,16 +129,17 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         
 
         #BottomWidget布局
+        self.bottomTitle=Do_BottomTitleWidget()
         self.bottomOther=Do_BottomOtherWidget()
         self.bottomOther.setMinimumHeight(150)
         myHttp=MyHttp()
         bottomPostList=myHttp.getNewPostList()
         for p in bottomPostList:
-            p['id']=QLabel("<html><head/><body><p><a href=\"https://loachblog.com/post/"+str(p['id'])+"/\"><span style=\" font-size:12px; color:#FFFFFF;text-decoration:none;\">"+p['title']+"</span></a></p></body></html>")
+            p['id']=QLabel("<html><head/><body><p><a href=\"https://loachblog.com/post/"+str(p['id'])+"/\"><span style=\" font-size:14px; color:#FFFFFF;text-decoration:none;\">"+p['title']+"</span></a></p></body></html>")
             p['id'].setOpenExternalLinks(True)
             self.bottomOther.verticalLayout.addWidget(p['id'])
         
-        pmore=QLabel("<html><head/><body><p><a href=\"https://loachblog.com/\"><span style=\" font-size:12px; color:#FFFFFF;text-decoration:none;\">更多</span></a></p></body></html>")
+        pmore=QLabel("<html><head/><body><p><a href=\"https://loachblog.com/\"><span style=\" font-size:14px; color:#FFFFFF;text-decoration:none;\">更多</span></a></p></body></html>")
         pmore.setOpenExternalLinks(True)
         self.bottomOther.verticalLayout.addWidget(pmore)
         self.bottomOther.widgetBottomLeft.setContentsMargins(10,10,10,10)
@@ -145,21 +147,23 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
 
         bottomTagList=myHttp.getNewTagList()
         for p in bottomTagList:
-            p['id']=QLabel("<html><head/><body><p><a href=\"https://loachblog.com/tags/"+str(p['id'])+"/\"><span style=\" font-size:12px; color:#FFFFFF;text-decoration:none;\">"+p['name']+"</span></a></p></body></html>")
+            p['id']=QLabel("<html><head/><body><p><a href=\"https://loachblog.com/tags/"+str(p['id'])+"/\"><span style=\" font-size:14px; color:#FFFFFF;text-decoration:none;\">"+p['name']+"</span></a></p></body></html>")
             p['id'].setOpenExternalLinks(True)
             self.bottomOther.verticalLayout_2.addWidget(p['id'])
         
-        tmore=QLabel("<html><head/><body><p><a href=\"https://loachblog.com/\"><span style=\" font-size:12px; color:#FFFFFF;text-decoration:none;\">更多</span></a></p></body></html>")
+        tmore=QLabel("<html><head/><body><p><a href=\"https://loachblog.com/\"><span style=\" font-size:14px; color:#FFFFFF;text-decoration:none;\">更多</span></a></p></body></html>")
         tmore.setOpenExternalLinks(True)
         self.bottomOther.verticalLayout_2.addWidget(tmore)
+        self.bottomOther.widget_BottomCenter.setContentsMargins(10,10,10,10)
 
 
         #底部版权面板
         self.bottomCopyright=Do_BottomCopyrightWidget()
         self.bottomCopyright.setMinimumHeight(50)
-        
+        self.vl_Bottom.addWidget(self.bottomTitle)
         self.vl_Bottom.addWidget(self.bottomOther)
         self.vl_Bottom.addWidget(self.bottomCopyright)
+
     
     def eventFilter(self, obj, event):
         # 事件过滤器

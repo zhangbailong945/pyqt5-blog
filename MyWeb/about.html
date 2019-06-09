@@ -22,25 +22,92 @@
 		<meta name="apple-mobile-web-app-title" content="Amaze UI" />
 		<link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css">
 		<link rel="stylesheet" href="css/amazeui.page.css">
+		<style>
+			.headimg {
+				width: 107px;
+				height: 107px;
+				margin: 0 auto;
+				-webkit-background-size: 220px 220px;
+				-moz-background-size: 220px 220px;
+				background-size: 220px 220px;
+				-webkit-border-radius: 110px;
+				border-radius: 110px;
+				-webkit-transition: -webkit-transform 2s ease-out;
+				-moz-transition: -moz-transform 2s ease-out;
+				-o-transition: -o-transform 2s ease-out;
+				-ms-transition: -ms-transform 2s ease-out;
+			}
+
+			.headimg:hover {
+				-webkit-transform: rotateZ(360deg);
+				-moz-transform: rotateZ(360deg);
+				-o-transform: rotateZ(360deg);
+				-ms-transform: rotateZ(360deg);
+				transform: rotateZ(360deg);
+			}
+		</style>
 	</head>
 	<body>
 		<div class="am-container about" id="about">
 
- <article data-am-widget="paragraph"
-           class="am-paragraph am-paragraph-default"
-           
-           data-am-paragraph="{ tableScrollable: true, pureview: true }">
+			<article data-am-widget="paragraph" class="am-paragraph am-paragraph-default" data-am-paragraph="{ tableScrollable: true, pureview: true }">
+				<section class="post-content">
+					<blockquote>
+						<p>关于我</p>
+					</blockquote>
+					<div align="center">
+						<img class="headimg" src="http://loachblog.com/static/blog/img/logo.png" width="100" alt="author:loach" height="100" />
+					</div>
 
-          <img src=./img/logo.png><p class=paragraph-default-p>南极洲又称<a href=http://zh.wikipedia.org/w/index.php?title=%E7%AC%AC%E4%B8%83%E5%A4%A7%E9%99%86&redirect=no>第七大陆</a>，
-		  是地球上最后一个被发现、唯一没有土著人居住的大陆。</p>
-		  <p>南极大陆为通常所说的南大洋（太平洋、印度洋和大西洋的南部水域）
-		  所包围，它与南美洲最近的距离为965公里，距新西兰2000公里、
-		  距澳大利亚2500公里、距南非3800公里、距中国北京的距离约有12000公里。
-		  南极大陆的总面积为1390万平方公里，相当于中国和印巴次大陆面积的总和，
-		  居世界各洲第五位。</p>
-  </article>
+					<blockquote>
+						<p>座右铭</p>
+					</blockquote>
+					<p>有志者,事竟成;苦心人,天不负.</p>
+					<blockquote>
+						<p>个人技能</p>
+					</blockquote>
+					<pre class="codehilite"><code class="language-json">{
+    &quot;Name&quot;:&quot;loach&quot;,
+    &quot;Location&quot;:&quot;ZhuHai&quot;,
+    &quot;Skills&quot;:{
+        &quot;Design&quot;:[&quot;Photoshop&quot;,&quot;Css&quot;,&quot;Js&quot;,&quot;Jquery&quot;],
+        &quot;Programming&quot;:[&quot;java&quot;,&quot;php&quot;,&quot;Python&quot;],
+        &quot;Language&quot;:[&quot;Chinese&quot;],
+    },
+    &quot;Hobby&quot;:[&quot;Music&quot;,&quot;DIY&quot;,&quot;LOL&quot;,&quot;PUBG&quot;]
+}</code></pre>
 
-			
+
+					<blockquote>
+						<p>生活</p>
+					</blockquote>
+					<pre class="codehilite"><code class="language-python">while True:
+    health++
+    smile++</code></pre>
+
+
+					<blockquote>
+						<p>网站</p>
+					</blockquote>
+					<pre class="codehilite"><code class="language-json">{
+    &quot;Server&quot;:&quot;Tencent Cloud&quot;,
+    &quot;System&quot;:&quot;Centos7.4 64bit&quot;,
+    &quot;Program Language&quot;:&quot;Python-3.6.4&quot;,
+    &quot;Http Server&quot;:&quot;Gunicorn-19.7.1&quot;,
+    &quot;Proxy Server&quot;:&quot;Nginx-1.13.9&quot;,
+    &quot;Pip list&quot;:{   
+        &quot;Web FrameWork&quot;:[&quot;Django-2.0.3&quot;],
+        &quot;Search FrameWork&quot;:[&quot;django-haystack-2.8.0&quot;],
+        &quot;Search Engine&quot;:[&quot;Whoosh-2.7.4&quot;],
+        &quot;ChineseAnalyer&quot;:[&quot;jieba-0.39&quot;]
+        &quot;Post Editor&quot;:[&quot;Markdown-2.6.11&quot;],
+    },
+    &quot;Developer&quot;:&quot;Loach&quot;
+}</code></pre>
+				</section>
+			</article>
+
+
 		</div>
 		<div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
 			<a href="#top" title="">
@@ -62,11 +129,10 @@
 		<script src="js/amazeui.page.js"></script>
 		<script>
 			$(function() {
-			
+
 
 
 			});
-
 		</script>
 	</body>
 </html>

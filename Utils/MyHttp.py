@@ -40,7 +40,7 @@ class MyHttp(object):
         '''
         获取最新的六条标签
         '''
-        url='http://localhost:8000/api/tags/?format=json&pageNumer=1&pageSize=6'
+        url='http://localhost:8000/api/tags/?format=json&pageNumer=1&pageSize=15'
         headers=self.setHeader()
         list1=[]
         try:

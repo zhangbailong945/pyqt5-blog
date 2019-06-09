@@ -93,16 +93,6 @@ StyleSheet='''
     background-color: rgb(255, 255, 255);
 }
 
-#tb_Post{
-    border:none;
-}
-
-#pb_Previous,#pb_Next{
-    border:none;
-    background-color: rgb(247, 155, 106);
-    color:white;
-    border:radius:10px;
-}
 
 /*登录面板*/
 #RightLoginWidget{
@@ -114,7 +104,7 @@ StyleSheet='''
 }
 
 
-#版权面板
+/*版权面板*/
 #label_BottomCopyRight_Line{
     margin-right:4px;
 }
@@ -130,7 +120,6 @@ StyleSheet='''
 #label_BottomCopyright_Copyright{
     margin-right:4px;
 }
-
 
 '''
 

@@ -1,0 +1,8 @@
+StyleSheet='''
+
+/*标题栏面板*/
+#HeaderTitlebarWidget{
+    background-color: rgb(247, 155, 106);
+}
+
+'''

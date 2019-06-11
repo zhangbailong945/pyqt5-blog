@@ -22,5 +22,5 @@ class MainWindow(FramelessWindow):
 if __name__=='__main__':
     app=QApplication(sys.argv)
     mainWindow=MainWindow()
-    mainWindow.set
+    mainWindow.show()
     sys.exit(app.exec_())

@@ -56,8 +56,3 @@ class ThemeManager:
     @classmethod
     def stylePath(cls,path=''):
         return os.path.abspath(os.path.join(ThemeManager.ThemeDir,path or ThemeManager.ThemeName,'style.qss')).replace('\\','/')
-
-
-
-if __name__ == "__main__":
-    print(ThemeManger.stylePath)

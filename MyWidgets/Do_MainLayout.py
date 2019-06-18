@@ -13,12 +13,15 @@ from MyWidgets.Do_BottomTitleWidget import Do_BottomTitleWidget
 from MyWidgets.Do_LeftCategoryWidget import Do_LeftCategoryWidget
 
 from PyQt5.QtWidgets import QApplication,QWidget,QSpacerItem,QSizePolicy,QLabel
-from PyQt5.QtGui import QEnterEvent,QFont,QFontDatabase,QPixmap
+from PyQt5.QtGui import QEnterEvent,QFont,QFontDatabase,QPixmap,QColor
 from PyQt5.QtCore import Qt,pyqtSignal,pyqtSlot,QEvent,QUrl
 from PyQt5.QtNetwork import QNetworkAccessManager,QNetworkReply,QNetworkRequest
 
 from Utils.MyHttp import MyHttp
 from Utils.Constants import Constants
+from Utils.ThemeManager import ThemeManager
+from Utils.CommonUtils import Setting
+from Utils.GradientUtils import GradientUtils
 from Utils.MyHttp import MyHttp
 
 import sys,os,json
@@ -30,10 +33,23 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         self.setAttribute(Qt.WA_StyledBackground,True)
         self.setupUi(self)
         self.constants=Constants()
-
-        self.font=self.constants.myFont
+        self.font=ThemeManager.font()
         self._initUi()
         self._initIndex()
+        self._initStyle()
+    
+    def _initStyle(self):
+        colourful=Setting.value('colourful')
+        if colourful:
+            ThemeManager.loadFont()
+            if isinstance(colourful,QColor):
+                ThemeManager.loadColourfulTheme(colourful)
+            else:
+                # json数据转渐变
+                ThemeManager.loadColourfulTheme(
+                    GradientUtils.toGradient(colourful))
+        else:
+            ThemeManager.loadTheme()
     
     def _initUi(self):
         self.resize(800,600)
@@ -49,7 +65,7 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         self.titleBar.pb_Normal.clicked.connect(self.on_pb_Normal_clicked)
         
         #设置按钮图标
-        self.titleBar.pb_Skin.setText("\uf0e4")
+        self.titleBar.pb_Skin.setText("\uf013")
         self.titleBar.pb_Skin.setFont(self.font)
         self.titleBar.pb_Minimum.setText("\uf2d1")
         self.titleBar.pb_Minimum.setFont(self.font)

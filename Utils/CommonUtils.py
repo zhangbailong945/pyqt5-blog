@@ -46,3 +46,16 @@ class Setting:
         cls.init()
         cls._Setting.setValue(key, value)
         cls._Setting.sync()
+
+
+class _Signals(QObject):
+
+    # 添加多彩item
+    colourfulItemAdded = pyqtSignal(int, int, str, object)
+    # 添加多彩item完成
+    colourfulItemAddFinished = pyqtSignal()
+    # 多彩item点击,色彩
+    colourfulItemClicked = pyqtSignal(str, object)
+
+# 说白了就是全局信号定义
+Signals = _Signals()

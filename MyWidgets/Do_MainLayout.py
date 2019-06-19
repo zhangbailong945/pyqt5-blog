@@ -24,6 +24,8 @@ from Utils.CommonUtils import Setting
 from Utils.GradientUtils import GradientUtils
 from Utils.MyHttp import MyHttp
 
+from MyWidgets.Dialogs.SkinDialog import SkinDialog
+
 import sys,os,json
 
 class Do_MainLayout(FramelessWindow,Ui_MainLayout):
@@ -218,7 +220,9 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         '''
         换皮肤
         '''
-        pass
+        if not hasattr(self, 'skinDialog'):
+            self.skinDialog = SkinDialog(self)
+        self.skinDialog.exec_()
 
     @pyqtSlot()
     def on_pb_Minimum_clicked(self):

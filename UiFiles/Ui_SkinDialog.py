@@ -120,8 +120,8 @@ class Ui_FormSkinDialog(object):
         self.label.setText(_translate("FormSkinDialog", "Transparency"))
         self.buttonRestore.setText(_translate("FormSkinDialog", "Restore the default theme"))
 
-from Widgets.Skins.ColourfulWidget import ColourfulWidget
-from Widgets.Skins.ThemeWidget import ThemeWidget
+from MyWidgets.Skins.ColourfulWidget import ColourfulWidget
+from MyWidgets.Skins.ThemeWidget import ThemeWidget
 
 if __name__ == "__main__":
     import sys

@@ -6,7 +6,7 @@ from time import time
 from PyQt5.QtCore import QObject, QThread, QRunnable
 from PyQt5.QtGui import QLinearGradient, QColor
 
-from CommonUtil import Signals
+from Utils.CommonUtils import Signals
  
 def splistList(src, length):
     # 等分列表

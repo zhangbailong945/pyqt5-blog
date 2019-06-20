@@ -55,8 +55,8 @@ class Ui_RightLoginWidget(object):
     def retranslateUi(self, RightLoginWidget):
         _translate = QtCore.QCoreApplication.translate
         RightLoginWidget.setWindowTitle(_translate("RightLoginWidget", "Form"))
-        self.lb_Login_Title.setText(_translate("RightLoginWidget", "个人中心"))
-        self.clb_Login.setText(_translate("RightLoginWidget", "<html><head/><body><p><a href=\"https://loachblog.com/accounts/login/?\"><span style=\" font-size:14pt; color:#0000ff;text-decoration:none;\">登录</span></a></p></body></html>"))
+        self.lb_Login_Title.setText(_translate("RightLoginWidget", "Person Center"))
+        self.clb_Login.setText(_translate("RightLoginWidget", "<html><head/><body><p><a href=\"https://loachblog.com/accounts/login/?\"><span style=\" font-size:14pt; color:#0000ff;text-decoration:none;\">Login</span></a></p></body></html>"))
 
 
 if __name__ == "__main__":

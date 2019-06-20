@@ -14,7 +14,7 @@ from MyWidgets.Do_LeftCategoryWidget import Do_LeftCategoryWidget
 
 from PyQt5.QtWidgets import QApplication,QWidget,QSpacerItem,QSizePolicy,QLabel
 from PyQt5.QtGui import QEnterEvent,QFont,QFontDatabase,QPixmap,QColor
-from PyQt5.QtCore import Qt,pyqtSignal,pyqtSlot,QEvent,QUrl
+from PyQt5.QtCore import Qt,pyqtSignal,pyqtSlot,QEvent,QUrl,QTranslator,QLocale
 from PyQt5.QtNetwork import QNetworkAccessManager,QNetworkReply,QNetworkRequest
 
 from Utils.MyHttp import MyHttp
@@ -23,6 +23,7 @@ from Utils.ThemeManager import ThemeManager
 from Utils.CommonUtils import Setting
 from Utils.GradientUtils import GradientUtils
 from Utils.MyHttp import MyHttp
+from Utils.CommonConstants import TranslationFile
 
 from MyWidgets.Dialogs.SkinDialog import SkinDialog
 
@@ -39,6 +40,15 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         self._initUi()
         self._initIndex()
         self._initStyle()
+        self._initLocalLanguage()
+    
+    def _initLocalLanguage(self):
+        if QLocale.system().language() in (QLocale.China,QLocale.Chinese,QLocale.Taiwan,QLocale.HongKong,QLocale.Macau):
+            translator=QTranslator(self)
+            translator.load(os.path.abspath(TranslationFile).replace('\\', '/'))
+            QApplication.instance().installTranslator(translator)
+
+
     
     def _initStyle(self):
         colourful=Setting.value('colourful')
@@ -131,11 +141,9 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         #分页面板
         self.centerLeftCategory=Do_LeftCategoryWidget()
 
-        #self.vl_CenterLeft.addWidget(self.centerLeftPost)
+        
         #左边
-        self.leftWidget.addWidget(self.centerLeftPost)
-
-        self.leftWidget.addWidget(self.centerLeftCategory)
+        self.vl_CenterLeft.addWidget(self.centerLeftPost)
         self.leftWidget.setContentsMargins(0,0,20,0)
 
         #右边
@@ -191,23 +199,18 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         return FramelessWindow.eventFilter(self, obj, event)
     
     def on_pb_Category_clicked(self):
-        self.leftWidget.setCurrentIndex(0)
         self.centerLeftPost.web_Post.load(QUrl("file:///"+self.categoryHtmlPath))
     
     def on_pb_Index_clicked(self):
-        self.leftWidget.setCurrentIndex(0)
         self.centerLeftPost.web_Post.load(QUrl("file:///"+self.indexHtmlPath))
     
     def on_pb_DateTime_clicked(self):
-        self.leftWidget.setCurrentIndex(0)
         self.centerLeftPost.web_Post.load(QUrl("file:///"+self.timeHtmlPath))
     
     def on_pb_Tags_clicked(self):
-        self.leftWidget.setCurrentIndex(0)
         self.centerLeftPost.web_Post.load(QUrl("file:///"+self.tagsHtmlPath))
     
     def on_pb_About_clicked(self):
-        self.leftWidget.setCurrentIndex(0)
         self.centerLeftPost.web_Post.load(QUrl("file:///"+self.aboutHtmlPath))
     
     

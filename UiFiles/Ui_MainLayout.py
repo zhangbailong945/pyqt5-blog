@@ -31,7 +31,7 @@ class Ui_MainLayout(object):
         self.vl_Center.setContentsMargins(0, 0, 0, 0)
         self.vl_Center.setSpacing(0)
         self.vl_Center.setObjectName("vl_Center")
-        self.leftWidget = QtWidgets.QStackedWidget(self.centerWidget)
+        self.leftWidget = QtWidgets.QWidget(self.centerWidget)
         self.leftWidget.setObjectName("leftWidget")
         self.vl_CenterLeft = QtWidgets.QVBoxLayout(self.leftWidget)
         self.vl_CenterLeft.setContentsMargins(0, 0, 0, 0)

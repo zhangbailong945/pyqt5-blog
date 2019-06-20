@@ -83,9 +83,9 @@ class Ui_BottomTitleWidget(object):
     def retranslateUi(self, Ui_BottomTitleWidget):
         _translate = QtCore.QCoreApplication.translate
         Ui_BottomTitleWidget.setWindowTitle(_translate("Ui_BottomTitleWidget", "Form"))
-        self.label.setText(_translate("Ui_BottomTitleWidget", "最新笔记"))
-        self.label_3.setText(_translate("Ui_BottomTitleWidget", "最新标签"))
-        self.label_5.setText(_translate("Ui_BottomTitleWidget", "合作伙伴"))
+        self.label.setText(_translate("Ui_BottomTitleWidget", "New Posts"))
+        self.label_3.setText(_translate("Ui_BottomTitleWidget", "New Tags"))
+        self.label_5.setText(_translate("Ui_BottomTitleWidget", "Partners"))
 
 
 

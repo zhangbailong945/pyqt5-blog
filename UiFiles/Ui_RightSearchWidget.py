@@ -72,8 +72,8 @@ class Ui_RightSearchWidget(object):
     def retranslateUi(self, RightSearchWidget):
         _translate = QtCore.QCoreApplication.translate
         RightSearchWidget.setWindowTitle(_translate("RightSearchWidget", "Form"))
-        self.lb_Search_Text.setText(_translate("RightSearchWidget", "搜索"))
-        self.pb_Keyword.setText(_translate("RightSearchWidget", "搜索"))
+        self.lb_Search_Text.setText(_translate("RightSearchWidget", "Search"))
+        self.pb_Keyword.setText(_translate("RightSearchWidget", "Search"))
 
 
 if __name__ == "__main__":

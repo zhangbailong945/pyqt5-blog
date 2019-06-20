@@ -35,7 +35,7 @@ class Ui_HeaderTextWidget(object):
         _translate = QtCore.QCoreApplication.translate
         HeaderTextWidget.setWindowTitle(_translate("HeaderTextWidget", "Form"))
         self.lb_HeaderText1.setText(_translate("HeaderTextWidget", "LoachBlog"))
-        self.lb_HeaderText2.setText(_translate("HeaderTextWidget", "个人笔记"))
+        self.lb_HeaderText2.setText(_translate("HeaderTextWidget", "Personal Notes"))
 
 
 if __name__ == "__main__":

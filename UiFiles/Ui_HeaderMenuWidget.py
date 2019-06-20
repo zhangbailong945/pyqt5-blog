@@ -62,11 +62,11 @@ class Ui_HeaderMenuWidget(object):
     def retranslateUi(self, HeaderMenuWidget):
         _translate = QtCore.QCoreApplication.translate
         HeaderMenuWidget.setWindowTitle(_translate("HeaderMenuWidget", "Form"))
-        self.pb_Index.setText(_translate("HeaderMenuWidget", "首页"))
-        self.pb_Category.setText(_translate("HeaderMenuWidget", "分类"))
-        self.pb_DateTime.setText(_translate("HeaderMenuWidget", "时间轴"))
-        self.pb_Tags.setText(_translate("HeaderMenuWidget", "标签云"))
-        self.pb_About.setText(_translate("HeaderMenuWidget", "关于"))
+        self.pb_Index.setText(_translate("HeaderMenuWidget", "Home"))
+        self.pb_Category.setText(_translate("HeaderMenuWidget", "Category"))
+        self.pb_DateTime.setText(_translate("HeaderMenuWidget", "Timelines"))
+        self.pb_Tags.setText(_translate("HeaderMenuWidget", "Tags"))
+        self.pb_About.setText(_translate("HeaderMenuWidget", "About"))
 
 
 if __name__ == "__main__":

@@ -34,13 +34,14 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
     def __init__(self,*args,**kwargs):
         super(Do_MainLayout,self).__init__(*args,**kwargs)
         self.setAttribute(Qt.WA_StyledBackground,True)
+        self._initLocalLanguage()
         self.setupUi(self)
         self.constants=Constants()
         self.font=ThemeManager.font()
         self._initUi()
         self._initIndex()
         self._initStyle()
-        self._initLocalLanguage()
+        
     
     def _initLocalLanguage(self):
         if QLocale.system().language() in (QLocale.China,QLocale.Chinese,QLocale.Taiwan,QLocale.HongKong,QLocale.Macau):

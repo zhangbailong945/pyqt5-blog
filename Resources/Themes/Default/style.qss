@@ -344,3 +344,18 @@ PictureWidget {
 #buttonClose:hover {
     background-color: rgba(212, 64, 39, 255); /*红色*/
 }
+
+#web_Post:vertical {
+    background: transparent; /*背景透明*/
+    width: 10px; /*宽度*/
+    margin: 0px 0px 0px 0px; /**/
+    padding-top: 12px; /*距离上面12px*/
+    padding-bottom: 12px; /*距离底部12px*/
+}
+
+
+/*当鼠标放到纵向或者横向滚动条上面时*/
+#web_Post:vertical:hover,QScrollBar:horizontal:hover {
+    background: rgba(0, 0, 0, 30); /*修改背景透明度 30*/
+    border-radius: 5px; /*圆角*/
+}

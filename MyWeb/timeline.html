@@ -1,60 +1,64 @@
 <!doctype html>
 <html class="no-js">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="description" content="">
-		<meta name="keywords" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>LoachBlog</title>
 
-		<!-- Set render engine for 360 browser -->
-		<meta name="renderer" content="webkit">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>LoachBlog</title>
 
-		<!-- No Baidu Siteapp-->
-		<meta http-equiv="Cache-Control" content="no-siteapp" />
-		<!-- Add to homescreen for Chrome on Android -->
-		<meta name="mobile-web-app-capable" content="yes">
+	<!-- Set render engine for 360 browser -->
+	<meta name="renderer" content="webkit">
 
-		<!-- Add to homescreen for Safari on iOS -->
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<meta name="apple-mobile-web-app-title" content="Amaze UI" />
-		<link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css">
-		<link rel="stylesheet" href="css/amazeui.page.css">
-		<style>
-			#js-container .msry-item{
-				
-					width: 33.333%;
-					padding: 5px;
-				}
-  #js-container .msry-item .am-panel {
-    margin-bottom: 0;
-  }
+	<!-- No Baidu Siteapp-->
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<!-- Add to homescreen for Chrome on Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+
+	<!-- Add to homescreen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+	<link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css">
+	<link rel="stylesheet" href="css/amazeui.page.css">
+	<link rel="stylesheet" href="css/qwebengineview.css">
+	<style>
+		#js-container .msry-item {
+
+			width: 33.333%;
+			padding: 5px;
+		}
+
+		#js-container .msry-item .am-panel {
+			margin-bottom: 0;
+		}
 
 
-#load-more {
-  padding: 20px 0;
+		#load-more {
+			padding: 20px 0;
 
-}
+		}
 
-#load-more .more-btn{
-	  width: 100%;
-	  display: block;
-	  max-width: 200px;
-	  margin-left: auto;
-	  margin-right: auto;
-}
-		</style>
-	</head>
-	<body>
-		<div id="js-container">
+		#load-more .more-btn {
+			width: 100%;
+			display: block;
+			max-width: 200px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
+</head>
 
-		</div>
+<body>
+	<div id="js-container">
 
-		<div id="load-more"><button class="am-btn more-btn am-btn-primary">载入更多</button></div>
+	</div>
 
-		<script type="text/x-handlebars-template" id="tpl-list">
+	<div id="load-more"><button class="am-btn more-btn am-btn-primary">载入更多</button></div>
+
+	<script type="text/x-handlebars-template" id="tpl-list">
 			{{#each results}}
 		  <div class="msry-item">
 		    <section class="am-panel am-panel-default">
@@ -71,69 +75,65 @@
 		  </div>
 		  {{/each}}
 		</script>
-		<div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
-			<a href="#top" title="">
-				<img class="am-gotop-icon-custom" src="http://amazeui.b0.upaiyun.com/assets/i/cpts/gotop/goTop.gif" />
-			</a>
-		</div>
-		<!--在这里编写你的代码-->
+	<div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
+		<a href="#top" title="">
+			<img class="am-gotop-icon-custom" src="http://amazeui.b0.upaiyun.com/assets/i/cpts/gotop/goTop.gif" />
+		</a>
+	</div>
+	<!--在这里编写你的代码-->
 
-		<!--[if (gte IE 9)|!(IE)]><!-->
-		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-		<script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js"></script>
-		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-		<script src="js/amazeui.page.js"></script>
-		<script src="js/masonry.pkgd.min.js"></script>
-		<script src="js/handlebars-v4.1.2.js"></script>
-		<script>
-			$(function() {
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+	<script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="js/amazeui.page.js"></script>
+	<script src="js/masonry.pkgd.min.js"></script>
+	<script src="js/handlebars-v4.1.2.js"></script>
+	<script>
+		$(function () {
 
-				var $c = $('#js-container');
-				var tpl = $('#tpl-list').html();
-				var compiler = Handlebars.compile(tpl);
-				var nextUrl=1;
+			var $c = $('#js-container');
+			var tpl = $('#tpl-list').html();
+			var compiler = Handlebars.compile(tpl);
+			var nextUrl = 1;
 
-				var getURL = function() {
-                    console.log(nextUrl)
-					if(nextUrl==1)
-					{
+			var getURL = function () {
+				console.log(nextUrl)
+				if (nextUrl == 1) {
 					return 'http://localhost:8000/api/post/?format=json&pageNumer=1&pageSize=6';
-					}
-					else if(nextUrl==null)
-					{
-						$('#load-more').hide();
-					}
-					else
-					{
-						return nextUrl;
-					}
-				};
+				}
+				else if (nextUrl == null) {
+					$('#load-more').hide();
+				}
+				else {
+					return nextUrl;
+				}
+			};
 
-				var getList = function(url) {
-					$.getJSON(url).then(function(data) {
-						if(data.next!=null)
-						{
-							nextUrl=data.next;
-						}
-						else
-						{
-							nextUrl=null;
-						}
-						var $html = $(compiler(data));
-						$c.append($html).masonry('appended', $html).masonry('layout');
-					});
-				};
-
-				$c.masonry({
-					itemSelector: '.msry-item'
+			var getList = function (url) {
+				$.getJSON(url).then(function (data) {
+					if (data.next != null) {
+						nextUrl = data.next;
+					}
+					else {
+						nextUrl = null;
+					}
+					var $html = $(compiler(data));
+					$c.append($html).masonry('appended', $html).masonry('layout');
 				});
+			};
 
-				getList(getURL());
-
-				$('#load-more').on('click', function() {
-					getList(getURL());
-				});
+			$c.masonry({
+				itemSelector: '.msry-item'
 			});
-		</script>
-	</body>
+
+			getList(getURL());
+
+			$('#load-more').on('click', function () {
+				getList(getURL());
+			});
+		});
+	</script>
+</body>
+
 </html>

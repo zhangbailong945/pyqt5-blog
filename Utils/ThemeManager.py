@@ -147,67 +147,69 @@ StyleGradientTemplate = """
     background: {3};
 }}
 
-/*搜索框中的按钮*/
-#buttonClear {{
-    qproperty-bgColor: rgba({0}, {1}, {2}, 255);
-}}
-
-/*工具栏*/
-#widgetTools {{
-    background-color: rgba({0}, {1}, {2}, 60);
-}}
-
-/*工具栏中的按钮*/
-#buttonGithub, #buttonQQ, #buttonGroup {{
-    background: rgba({0}, {1}, {2}, 255);
-}}
-
-/*返回顶部,主页按钮*/
-#buttonBackToUp, #buttonHome {{
-    qproperty-bgColor: rgba({0}, {1}, {2}, 255);
-}}
-
-/*存放网页控件*/
-#widgetContents {{
-    background: rgba(248, 248, 248, 200);
-}}
-
-/*登录窗口*/
-#widgetLogin {{
-    background: {3};
-}}
-
-/*激活状态*/
-#widgetLogin[_active="true"] {{
-    border: 1px solid rgba({0}, {1}, {2}, 255);
-}}
-
-/*捐赠,更新,错误,主题窗口*/
-#widgetDonate, #widgetUpdate, #widgetError, #widgetSkin {{
-    border: 1px solid rgba({0}, {1}, {2}, 255);
-    background: {3};    /*背景颜色*/
-}}
-
-/*捐赠窗口,更新窗口,错误,主题窗口背景*/
-#widgetImage, #widgetUpdateBg, #widgetErrorBg, #widgetSkinBg {{
-    border: 1px solid rgba({0}, {1}, {2}, 255);
-}}
-
-/*更新进度条*/
-#progressBarUpdate::chunk {{
+/*标题栏*/
+#HeaderTitlebarWidget{{
     background-color: {3};
 }}
 
-/*pip按钮*/
-#buttonInstall {{
-    background: rgba({0}, {1}, {2}, 255);
+/*最小化最大化关闭按钮通用默认背景*/
+#pb_Skin,#pb_Maximum,#pb_Minimum,#pb_Close,#pb_Normal {{
+    background-color: {3};
+    
 }}
-#buttonInstall:hover {{
-    background: rgba({0}, {1}, {2}, 255);
+
+/*头像logo面板*/
+#HeaderImgWidget{{
+    background-color: {3};
 }}
-#buttonInstall:pressed {{
-    background: rgba({0}, {1}, {2}, 255);
+
+/*文字面板*/
+#HeaderTextWidget{{
+    background-color: {3};
 }}
+
+#topWidget{{
+    background-color: {3};
+}}
+
+/*内容面板*/
+#centerWidget{{
+    background-color: {3};
+}}
+
+#leftWidget{{
+    background-color: {3};
+}}
+
+#rightWidget{{
+    background-color: {3};
+}}
+
+#bottomWidget{{
+    background-color: {3};
+}}
+
+/*笔记列表面板*/
+#LeftPostWidget{{
+    background-color: {3};
+}}
+
+
+/*登录面板*/
+#RightLoginWidget{{
+    background-color: {3};
+}}
+
+/*版权*/
+#BottomCopyrightWidget{{
+    background-color: {3};
+}}
+
+/*版权其他*/
+#BottomOtherWidget{{
+    background-color: {3};
+}}
+
 
 #tabWidgetSkinMain > QTabBar::tab:selected {{
     color: rgb({0}, {1}, {2});

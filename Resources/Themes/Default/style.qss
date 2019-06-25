@@ -259,27 +259,38 @@ PictureWidget {
     min-height: 48px;
     max-height: 48px;
     color: rgb(181, 182, 185);
-    font-family: "pyqtclient";
     font-size: 40px;
     border: none; /*无边框*/
     background: transparent; /*背景透明*/
 }
+
+#buttonPreviewClose {
+    min-width: 48px;
+    max-width: 48px;
+    min-height: 48px;
+    max-height: 48px;
+    color: rgb(241, 92, 92);
+    font-size: 40px;
+    border: 1px solid red; /*无边框*/
+    background: transparent; /*背景透明*/
+}
+
 #buttonPreviewPrevious:hover,#buttonPreviewNext:hover, #buttonPreviewClose:hover {
     color: rgb(118, 122, 126);
+}
+
+#buttonPreviewClose:hover {
+    color: rgb(240, 69, 77);
 }
 #buttonPreviewPrevious:pressed,#buttonPreviewNext:pressed, #buttonPreviewClose:pressed {
     color: rgb(27, 36, 42);
 }
 
-#buttonPreviewPrevious {
-    qproperty-text: "\5106";
+#buttonPreviewClose:pressed {
+    color: rgb(248, 10, 10);
 }
-#buttonPreviewNext {
-    qproperty-text: "\5107";
-}
-#buttonPreviewClose {
-    qproperty-text: "\5105";
-}
+
+
 #buttonPreviewApply {
     color: white;
     font-size: 20px;

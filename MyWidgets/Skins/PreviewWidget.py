@@ -13,9 +13,10 @@ import os
 
 from PyQt5.QtCore import Qt, pyqtSlot, QTimer
 from PyQt5.QtGui import QPixmap, QColor
-from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect
+from PyQt5.QtWidgets import QWidget, QGraphicsDropShadowEffect,QVBoxLayout
 
-from UiFiles.Ui_MainLayout import Ui_MainLayout
+
+from MyWidgets.Skin_MainLayout import Skin_MainLayout
 from UiFiles.Ui_PreviewWidget import Ui_FormPreviewWidget
 from Utils.CommonUtils import Setting
 from Utils.GradientUtils import GradientUtils
@@ -42,7 +43,9 @@ class PreviewWidget(QWidget, Ui_FormPreviewWidget):
         effect.setOffset(0, 0)
         effect.setColor(Qt.gray)
         self.labelPreviewImage.setGraphicsEffect(effect)
-        # 鼠标样式
+        self.font=ThemeManager.font()
+        self.buttonPreviewClose.setText('\uf00d')
+        self.buttonPreviewClose.setFont(self.font)
 
     def setTitle(self, title):
         """设置标题
@@ -61,10 +64,11 @@ class PreviewWidget(QWidget, Ui_FormPreviewWidget):
         if not hasattr(self, '_UiMainWindow'):
             # 创建一个隐藏的主界面
             self._UiMainWindow = QWidget()
-            ui = Ui_MainLayout()
-            ui.setupUi(self._UiMainWindow)
+            self.layout=QVBoxLayout(self._UiMainWindow)
+            ui = Skin_MainLayout()
+            self.layout.addWidget(ui)
             # 修改名字防止受app的style影响
-            ui.setupUi().setObjectName('widgetMain1')
+            ui.setObjectName('widgetMain1')
             self._UiMainWindow.setAttribute(Qt.WA_TranslucentBackground, True)
             self._UiMainWindow.setWindowFlags(
                 self.windowFlags() | Qt.FramelessWindowHint)

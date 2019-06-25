@@ -25,14 +25,13 @@ from Utils.GradientUtils import GradientUtils
 from Utils.MyHttp import MyHttp
 from Utils.CommonConstants import TranslationFile
 
-from MyWidgets.Dialogs.SkinDialog import SkinDialog
 
 import sys,os,json
 
-class Do_MainLayout(FramelessWindow,Ui_MainLayout):
+class Skin_MainLayout(FramelessWindow,Ui_MainLayout):
 
     def __init__(self,*args,**kwargs):
-        super(Do_MainLayout,self).__init__(*args,**kwargs)
+        super(Skin_MainLayout,self).__init__(*args,**kwargs)
         self.setAttribute(Qt.WA_StyledBackground,True)
         self._initLocalLanguage()
         self.setupUi(self)
@@ -41,7 +40,6 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         self._initUi()
         self._initIndex()
         self._initStyle()
-        self.setObjectName('widgetMain')
         
     
     def _initLocalLanguage(self):
@@ -225,57 +223,45 @@ class Do_MainLayout(FramelessWindow,Ui_MainLayout):
         '''
         换皮肤
         '''
-        if not hasattr(self, 'skinDialog'):
-            self.skinDialog = SkinDialog(self)
-        self.skinDialog.exec_()
+        pass
 
     @pyqtSlot()
     def on_pb_Minimum_clicked(self):
         '''
         最小化
         '''
-        self.showMinimized()
+        pass
     
     @pyqtSlot()
     def on_pb_pb_Maximum_clicked(self):
         '''
         最大化
         '''
-        self.showMaximized()
+        pass
         
     @pyqtSlot()
     def on_pb_Normal_clicked(self):
         """
         还原
         """
-        self.showNormal()
+        pass
     
     @pyqtSlot()
     def on_pb_Close_clicked(self):
         """
         关闭
         """
-        self.close()
+        pass
     
     def changeEvent(self,event):
         #窗口改变改变事件
-        FramelessWindow.changeEvent(self,event)
-        if event.type()==QEvent.WindowStateChange:
-            state=self.windowState()
-            if state==(state | Qt.WindowMaximized):
-                #最大化状态显示还原按钮
-                self.titleBar.pb_Maximum.setVisible(False)
-                self.titleBar.pb_Normal.setVisible(True)
-            else:
-                #隐藏还原按钮
-                self.titleBar.pb_Maximum.setVisible(True)
-                self.titleBar.pb_Normal.setVisible(False)
+        pass
         
     def _initIndex(self):
         pass
     
 if __name__ == "__main__":
     app=QApplication(sys.argv)
-    w=Do_MainLayout()
+    w=Skin_MainLayout()
     w.show()
     sys.exit(app.exec_())

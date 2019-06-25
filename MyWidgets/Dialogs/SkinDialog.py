@@ -44,6 +44,8 @@ class SkinDialog(MoveDialog, Ui_FormSkinDialog):
         self.font=ThemeManager.font()
         self.buttonClose.setText('\uf00d')
         self.buttonClose.setFont(self.font)
+        self.tabPicture.hide()
+        self.tabTheme.hide()
 
     def _initSignals(self):
         #Signals.pictureItemAdded.connect(self.onPictureItemAdded)

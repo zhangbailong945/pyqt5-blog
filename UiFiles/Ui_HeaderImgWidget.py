@@ -12,8 +12,8 @@ class Ui_HeaderImgWidget(object):
     def setupUi(self, HeaderImgWidget):
         HeaderImgWidget.setObjectName("HeaderImgWidget")
         HeaderImgWidget.resize(400, 86)
-        HeaderImgWidget.setAutoFillBackground(False)
-        HeaderImgWidget.setStyleSheet("background-color: rgb(247, 155, 106);")
+        HeaderImgWidget.setAutoFillBackground(True)
+        #HeaderImgWidget.setStyleSheet("background-color: rgb(247, 155, 106);")
         self.hl_htw_img = QtWidgets.QHBoxLayout(HeaderImgWidget)
         self.hl_htw_img.setContentsMargins(0, 0, 0, 0)
         self.hl_htw_img.setSpacing(0)

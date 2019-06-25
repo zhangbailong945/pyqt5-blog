@@ -12,7 +12,7 @@ class Ui_BottomCopyrightWidget(object):
     def setupUi(self, bottomCopyrightWidget):
         bottomCopyrightWidget.setObjectName("bottomCopyrightWidget")
         bottomCopyrightWidget.resize(400, 41)
-        bottomCopyrightWidget.setAutoFillBackground(False)
+        bottomCopyrightWidget.setAutoFillBackground(True)
         bottomCopyrightWidget.setStyleSheet("background-color: rgb(17, 17, 17);\n"
 "color: rgb(85, 85, 85);")
         self.horizontalLayout = QtWidgets.QHBoxLayout(bottomCopyrightWidget)

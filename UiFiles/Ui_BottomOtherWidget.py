@@ -12,7 +12,7 @@ class Ui_BottomOtherWidget(object):
     def setupUi(self, BottomOtherWidget):
         BottomOtherWidget.setObjectName("BottomOtherWidget")
         BottomOtherWidget.resize(400, 226)
-        BottomOtherWidget.setAutoFillBackground(False)
+        BottomOtherWidget.setAutoFillBackground(True)
         BottomOtherWidget.setStyleSheet("background-color: rgb(32, 32, 32);")
         self.horizontalLayout = QtWidgets.QHBoxLayout(BottomOtherWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)

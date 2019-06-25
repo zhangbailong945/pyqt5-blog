@@ -64,9 +64,9 @@ class ColourfulThread(QObject):
         acolor.setColorAt(1, acolor.endColor)
 
         defaults = splistList([
-            [self.tr('MidnightParis'), mcolor],             # 午夜巴黎
-            [self.tr('PrimroseGreenOnion'), pcolor],        # 樱草青葱
-            [self.tr('AutumnSun'), acolor],                 # 秋日暖阳
+            #[self.tr('MidnightParis'), mcolor],             # 午夜巴黎
+            #[self.tr('PrimroseGreenOnion'), pcolor],        # 樱草青葱
+            #[self.tr('AutumnSun'), acolor],                 # 秋日暖阳
             [self.tr('LightGray'), QColor(236, 236, 236)],  # 淡灰色
             [self.tr('DarkBlack'), QColor(33, 33, 33)],     # 深黑色
             [self.tr('BlueGreen'), QColor(0, 190, 172)],    # 蓝绿色

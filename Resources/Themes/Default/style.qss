@@ -35,7 +35,7 @@
 
 /*头像logo面板*/
 #HeaderImgWidget{
-    background-color: rgb(161, 73, 92);
+    background-color: rgb(247, 155, 106);
 }
 
 #hl_htw_img{

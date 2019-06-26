@@ -2,50 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN" sourcelanguage="en">
 <context>
-    <name>FormPreviewWidget</name>
-    <message>
-        <location filename="ts.py" line="22"/>
-        <source>Preview</source>
-        <translation>预览</translation>
-    </message>
-    <message>
-        <location filename="ts.py" line="23"/>
-        <source>Apply</source>
-        <translation>应用</translation>
-    </message>
-</context>
-<context>
-    <name>FormSkinDialog</name>
-    <message>
-        <location filename="ts.py" line="31"/>
-        <source>Skin</source>
-        <translation>皮肤</translation>
-    </message>
-    <message>
-        <location filename="ts.py" line="32"/>
-        <source>Theme</source>
-        <translation>主题</translation>
-    </message>
-    <message>
-        <location filename="ts.py" line="33"/>
-        <source>Colourful</source>
-        <translation>多彩</translation>
-    </message>
-    <message>
-        <location filename="ts.py" line="34"/>
-        <source>Picture</source>
-        <translation>图片</translation>
-    </message>
-    <message>
-        <location filename="ts.py" line="35"/>
-        <source>Transparency</source>
-        <translation>透明度</translation>
-    </message>
-    <message>
-        <location filename="ts.py" line="36"/>
-        <source>Restore the default theme</source>
-        <translation>恢复默认</translation>
-    </message>
+    <name>ColourfulThread</name>
     <message>
         <location filename="ts.py" line="37"/>
         <source>LightGray</source>
@@ -100,6 +57,52 @@
         <location filename="ts.py" line="48"/>
         <source>Red</source>
         <translation>红色</translation>
+    </message>
+</context>
+<context>
+    <name>FormPreviewWidget</name>
+    <message>
+        <location filename="ts.py" line="22"/>
+        <source>Preview</source>
+        <translation>预览</translation>
+    </message>
+    <message>
+        <location filename="ts.py" line="23"/>
+        <source>Apply</source>
+        <translation>应用</translation>
+    </message>
+</context>
+<context>
+    <name>FormSkinDialog</name>
+    <message>
+        <location filename="ts.py" line="31"/>
+        <source>Skin</source>
+        <translation>皮肤</translation>
+    </message>
+    <message>
+        <location filename="ts.py" line="32"/>
+        <source>Theme</source>
+        <translation>主题</translation>
+    </message>
+    <message>
+        <location filename="ts.py" line="33"/>
+        <source>Colourful</source>
+        <translation>多彩</translation>
+    </message>
+    <message>
+        <location filename="ts.py" line="34"/>
+        <source>Picture</source>
+        <translation>图片</translation>
+    </message>
+    <message>
+        <location filename="ts.py" line="35"/>
+        <source>Transparency</source>
+        <translation>透明度</translation>
+    </message>
+    <message>
+        <location filename="ts.py" line="36"/>
+        <source>Restore the default theme</source>
+        <translation>恢复默认主题</translation>
     </message>
 </context>
 <context>
@@ -182,6 +185,14 @@
         <location filename="ts.py" line="29"/>
         <source>Search</source>
         <translation>搜索</translation>
+    </message>
+</context>
+<context>
+    <name>ThemeWidget</name>
+    <message>
+        <location filename="ts.py" line="49"/>
+        <source>default</source>
+        <translation>默认</translation>
     </message>
 </context>
 <context>

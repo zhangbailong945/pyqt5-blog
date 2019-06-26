@@ -12,7 +12,7 @@ Created on 2019年1月20日
 import os
 
 from Utils.CommonUtils import Signals
-from Utils.ThemeThread import ColourfulThread
+from Utils.ThemeThread import ColourfulThread,ThemeThread
 from MyWidgets.Skins.SkinBaseWidget import PixmapWidth, PixmapHeight,\
     SkinBaseItemWidget, SkinBaseWidget
 
@@ -35,7 +35,7 @@ class ThemeWidget(SkinBaseWidget):
         """
         if self.gridLayout.count() > 0:
             return
-        
+        ThemeThread.start(PixmapWidth, PixmapHeight)
 
     def doPreviewPrevious(self):
         """上一个

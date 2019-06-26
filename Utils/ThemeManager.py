@@ -27,6 +27,8 @@ __Version__ = "Version 1.0"
 
 # 修改背景图片
 StylePictureTemplate = """
+
+
 /*主窗口*/
 #widgetMain {{
     border-image: url({0});    /*背景图片*/
@@ -39,6 +41,14 @@ StyleColorTemplate = """
 #widgetMain {{
     background: rgba({0}, {1}, {2}, 255);
 }}
+
+#dialogTitlebar{
+    background: rgba({0}, {1}, {2}, 255);
+}
+
+#widgetSkinBg {
+    border: 1px solid rgba({0}, {1}, {2}, 255);
+}
 
 /*搜索框中的按钮*/
 #buttonClear {{
@@ -142,10 +152,13 @@ PictureWidget {{
 
 # 渐变颜色
 StyleGradientTemplate = """
+
 /*主窗口*/
-#MyQWidget {{
+#widgetMain {{
     background: {3};
 }}
+
+
 
 /*标题栏*/
 #HeaderTitlebarWidget{{

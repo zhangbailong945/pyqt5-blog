@@ -61,7 +61,7 @@ class _Signals(QObject):
     themeItemAdded = pyqtSignal(int, int, str, object)
     # 添加主题item完成
     themeItemAddFinished = pyqtSignal()
-    # 主推item点击,路径
+    # 主题item点击,路径
     themeItemClicked = pyqtSignal(str, object)
 
 # 说白了就是全局信号定义

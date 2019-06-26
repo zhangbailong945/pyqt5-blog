@@ -7,6 +7,7 @@ from PyQt5.QtCore import QObject, QThread, QRunnable
 from PyQt5.QtGui import QLinearGradient, QColor
 
 from Utils.CommonUtils import Signals
+from Utils.CommonConstants import DirThemes
  
 def splistList(src, length):
     # 等分列表
@@ -87,3 +88,42 @@ class ColourfulThread(QObject):
                 QThread.yieldCurrentThread()
 
         Signals.colourfulItemAddFinished.emit()
+
+class ThemeThread(QObject):
+    """获取所有的主题（本地和云端）
+    """
+
+    def __init__(self, width, height, *args, **kwargs):
+        super(ThemeThread, self).__init__(*args, **kwargs)
+        self.width = width
+        self.height = height
+
+    @classmethod
+    def start(cls, width, height, parent=None):
+        """启动线程
+        :param cls:
+        :param width:        宽度
+        :param width:        高度
+        :param parent:
+        """
+        cls._thread = QThread(parent)
+        cls._worker = ThemeThread(width, height)
+        cls._worker.moveToThread(cls._thread)
+        cls._thread.started.connect(cls._worker.run)
+        cls._thread.finished.connect(cls._worker.deleteLater)
+        cls._thread.start()
+
+    def run(self):
+
+        defaults = [[p.parent.name, str(p)]
+                    for p in Path(DirThemes).rglob('style.qss')]
+
+        defaults = splistList(defaults, 5)
+
+        for row, default in enumerate(defaults):
+            for col, (name, path) in enumerate(default):
+                Signals.themeItemAdded.emit(row, col, name, path)
+                QThread.msleep(100)
+                QThread.yieldCurrentThread()
+
+        Signals.themeItemAddFinished.emit()

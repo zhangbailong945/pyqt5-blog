@@ -253,6 +253,7 @@ PictureWidget {
     border-bottom-right-radius: 4px;
     background: rgba(255, 255, 255, 240);
 }
+
 #buttonPreviewPrevious, #buttonPreviewNext, #buttonPreviewClose {
     min-width: 48px;
     max-width: 48px;
